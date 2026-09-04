@@ -39,12 +39,48 @@ html,body{margin:0;padding:0;background:#063d31;}
 }
 
 
-.recent-live{position:absolute;z-index:25;left:2.8%;top:68.5%;width:51.7%;height:17.0%;font-family:Arial,sans-serif;pointer-events:none}
-.recent-live .event-title{position:absolute;left:18%;right:2%;top:1.5%;height:18%;display:flex;align-items:center;color:#fff;font-weight:900;font-size:clamp(7px,1.45vw,16px);letter-spacing:.12em;text-transform:uppercase;background:#07513f}
-.recent-live .rows{position:absolute;left:0;right:0;top:38%;bottom:0;background:#e8e6df}
-.recent-live .row{height:25%;display:grid;grid-template-columns:18% 56% 26%;align-items:center;border-bottom:1px solid rgba(0,0,0,.08);font-weight:800;font-size:clamp(7px,1.25vw,15px)}
-.recent-live .rank{text-align:center}.recent-live .house{padding-left:4%}.recent-live .score{text-align:center}
-.recent-live .row:nth-child(1) .house{color:#235c98}.recent-live .row:nth-child(2) .house{color:#65358e}.recent-live .row:nth-child(3) .house{color:#a92e2b}.recent-live .row:nth-child(4) .house{color:#b98d13}
+
+
+.recent-table-live{
+  position:absolute;
+  z-index:25;
+  left:2.8%;
+  top:62.9%;
+  width:51.7%;
+  height:17.4%;
+  background:#ebe8df;
+  border-radius:0 0 4px 4px;
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+  pointer-events:none;
+  box-shadow:0 1px 0 rgba(0,0,0,.08) inset;
+}
+.recent-table-live .head,
+.recent-table-live .r{
+  display:grid;
+  grid-template-columns:18% 56% 26%;
+  align-items:center;
+}
+.recent-table-live .head{
+  height:20%;
+  background:#dedbd2;
+  color:#222;
+  font-size:clamp(7px,1.05vw,12px);
+  font-weight:900;
+  letter-spacing:.06em;
+}
+.recent-table-live .r{
+  height:20%;
+  border-top:1px solid rgba(0,0,0,.08);
+  font-size:clamp(8px,1.18vw,14px);
+  font-weight:800;
+}
+.recent-table-live .c{text-align:center}
+.recent-table-live .house{padding-left:4%}
+.recent-table-live .r.ford .house{color:#235c98}
+.recent-table-live .r.violet .house{color:#65358e}
+.recent-table-live .r.albert .house{color:#a92e2b}
+.recent-table-live .r.highland .house{color:#b98d13}
 
 </style>
 </head>
@@ -53,14 +89,15 @@ html,body{margin:0;padding:0;background:#063d31;}
 
 
 
-<div class="recent-live" id="recent-live">
-  <div class="event-title" id="recent-event-title">BACK TO SCHOOL</div>
-  <div class="rows">
-    <div class="row"><div class="rank">1</div><div class="house">Ford Avenue</div><div class="score" id="recent-ford"></div></div>
-    <div class="row"><div class="rank">2</div><div class="house">Violet Terrace</div><div class="score" id="recent-violet"></div></div>
-    <div class="row"><div class="rank">3</div><div class="house">Albert Avenue</div><div class="score" id="recent-albert"></div></div>
-    <div class="row"><div class="rank">4</div><div class="house">Highland Drive</div><div class="score" id="recent-highland"></div></div>
+
+<div class="recent-table-live" id="recent-live">
+  <div class="head">
+    <div class="c">RANK</div><div class="house">HOUSE</div><div class="c">POINTS</div>
   </div>
+  <div class="r ford"><div class="c rank">1</div><div class="house">Ford Avenue</div><div class="c score">11</div></div>
+  <div class="r violet"><div class="c rank">2</div><div class="house">Violet Terrace</div><div class="c score">10</div></div>
+  <div class="r albert"><div class="c rank">3</div><div class="house">Albert Avenue</div><div class="c score">8</div></div>
+  <div class="r highland"><div class="c rank">4</div><div class="house">Highland Drive</div><div class="c score">4</div></div>
 </div>
 
 <div class="dynamic-layer" aria-live="polite">
@@ -122,18 +159,18 @@ html,body{margin:0;padding:0;background:#063d31;}
       // First scored event in rows after the blank separator.
       const eventRow = vals.find((r, idx) => idx >= 6 && r[0] && [r[1],r[2],r[3],r[4]].some(v => v !== null && v !== ''));
       if (eventRow) {
-        document.getElementById('recent-event-title').textContent = String(eventRow[0]).toUpperCase();
         const eventScores = {
           ford: Number(eventRow[1]), violet: Number(eventRow[2]),
           albert: Number(eventRow[3]), highland: Number(eventRow[4])
         };
         const ranked = houses.map(h => ({...h, points:eventScores[h.key]}))
           .sort((a,b)=>b.points-a.points || a.name.localeCompare(b.name));
+        const rowsLive = document.querySelectorAll('#recent-live .r');
         ranked.forEach((h,i) => {
-          const row = document.querySelectorAll('#recent-live .row')[i];
-          row.querySelector('.rank').textContent = i+1;
-          row.querySelector('.house').textContent = h.name;
-          row.querySelector('.score').textContent = h.points;
+          rowsLive[i].className = 'r ' + h.key;
+          rowsLive[i].querySelector('.rank').textContent = i+1;
+          rowsLive[i].querySelector('.house').textContent = h.name;
+          rowsLive[i].querySelector('.score').textContent = h.points;
         });
       }
       badge.textContent = 'LIVE FROM GOOGLE SHEETS';
