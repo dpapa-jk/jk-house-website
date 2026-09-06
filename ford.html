@@ -68,6 +68,116 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
 .view-standings{position:absolute;left:66.9%;top:55.3%;width:28.5%;height:3.8%;z-index:40;display:block;}
 .view-events{position:absolute;left:3.4%;top:84.0%;width:28.2%;height:4.1%;z-index:40;display:block;}
 .view-gallery{position:absolute;left:67.2%;top:84.0%;width:28.0%;height:4.1%;z-index:40;display:block;}
+
+/* live Student Shout-Outs — replaces the old House Announcements card */
+.shout-card{
+  position:absolute;
+  left:33.6%;
+  top:59.6%;
+  width:32.4%;
+  height:28.0%;
+  z-index:55;
+  background:#fff;
+  border:1px solid #d7dce4;
+  border-radius:4px;
+  box-sizing:border-box;
+  overflow:hidden;
+  box-shadow:0 1px 2px rgba(0,0,0,.05);
+}
+.shout-header{
+  height:15.5%;
+  background:#07518d;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:3%;
+  padding:0 5%;
+  box-sizing:border-box;
+  font-weight:900;
+  font-size:clamp(10px,1.65vw,25px);
+  letter-spacing:.02em;
+  white-space:nowrap;
+}
+.shout-star{
+  font-size:clamp(14px,2.2vw,34px);
+  line-height:1;
+}
+.shout-list{
+  height:70%;
+  padding:2.5% 3.5% 1%;
+  box-sizing:border-box;
+  display:flex;
+  flex-direction:column;
+  gap:2.2%;
+  background:#fff;
+}
+.shout-item{
+  flex:1;
+  min-height:0;
+  background:#f4f6f9;
+  border-radius:5px;
+  padding:2.1% 3.2%;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+.shout-name{
+  color:#0b2d63;
+  font-weight:900;
+  font-size:clamp(8px,1.05vw,16px);
+  line-height:1.12;
+  margin-bottom:.8%;
+}
+.shout-text{
+  color:#17253a;
+  font-weight:500;
+  font-size:clamp(7px,.9vw,14px);
+  line-height:1.2;
+}
+.shout-empty{
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#5d6878;
+  font-weight:700;
+  font-size:clamp(8px,1vw,15px);
+  padding:8%;
+  box-sizing:border-box;
+}
+.shout-controls{
+  height:14.5%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6%;
+  background:#fff;
+  padding:0 4%;
+  box-sizing:border-box;
+}
+.shout-btn{
+  border:0;
+  background:#0a5db5;
+  color:#fff;
+  font-weight:900;
+  border-radius:4px;
+  cursor:pointer;
+  padding:2% 5%;
+  font-size:clamp(7px,.82vw,13px);
+  line-height:1;
+}
+.shout-btn:disabled{
+  opacity:.35;
+  cursor:default;
+}
+.shout-page{
+  color:#0b2d63;
+  font-weight:800;
+  font-size:clamp(7px,.8vw,12px);
+  min-width:22%;
+  text-align:center;
+}
+
 </style>
 </head>
 <body>
@@ -100,6 +210,19 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
   <a class="view-standings" href="house-cup.html" aria-label="View full standings"></a>
   <a class="view-events" href="events.html" aria-label="View all events"></a>
   <a class="view-gallery" href="gallery.html" aria-label="View full gallery"></a>
+
+  <section class="shout-card" aria-label="Ford Avenue Student Shout-Outs">
+    <div class="shout-header"><span class="shout-star">★</span><span>STUDENT SHOUT-OUTS</span></div>
+    <div class="shout-list" id="fordShoutList">
+      <div class="shout-empty">Loading Ford Avenue shout-outs…</div>
+    </div>
+    <div class="shout-controls">
+      <button class="shout-btn" id="shoutPrev" type="button" aria-label="Previous shout-outs">‹ PREVIOUS</button>
+      <div class="shout-page" id="shoutPage">LATEST</div>
+      <button class="shout-btn" id="shoutNext" type="button" aria-label="Older shout-outs">NEXT ›</button>
+    </div>
+  </section>
+
 </div>
 
 <script>
@@ -149,5 +272,133 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
   document.body.appendChild(s);
 })();
 </script>
+
+<script>
+(function(){
+  const DIRECT_SHEET_ID = "18Q00r8hh5lDiM3lLIXyiHzCyT6JJblmRDJsoDmAyth0";
+  const PUBLISHED_ID = "2PACX-1vRi8dFpeOjCBCan6mUjOkdY4BFj_b-kn7nMlp-uV4ICBwQhkhOiNy2EJ2YW_8ZQ_qqPLSkHFmiDfUv";
+  const GID = "1496082196";
+  const PAGE_SIZE = 3;
+
+  let shoutouts = [];
+  let page = 0;
+
+  const listEl = document.getElementById("fordShoutList");
+  const prevEl = document.getElementById("shoutPrev");
+  const nextEl = document.getElementById("shoutNext");
+  const pageEl = document.getElementById("shoutPage");
+
+  function safe(value){
+    return String(value == null ? "" : value)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function render(){
+    if (!shoutouts.length){
+      listEl.innerHTML = '<div class="shout-empty">No Ford Avenue shout-outs have been added yet.</div>';
+      prevEl.disabled = true;
+      nextEl.disabled = true;
+      pageEl.textContent = "LATEST";
+      return;
+    }
+
+    const pages = Math.ceil(shoutouts.length / PAGE_SIZE);
+    page = Math.max(0, Math.min(page, pages - 1));
+    const items = shoutouts.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
+
+    listEl.innerHTML = items.map(x => `
+      <div class="shout-item">
+        <div class="shout-name">${safe(x.name)} • ${safe(x.grade)}th Grade</div>
+        <div class="shout-text">${safe(x.message)}</div>
+      </div>
+    `).join("");
+
+    prevEl.disabled = page === 0;
+    nextEl.disabled = page >= pages - 1;
+    pageEl.textContent = page === 0 ? "LATEST" : `${page + 1} OF ${pages}`;
+  }
+
+  prevEl.addEventListener("click", function(){ if(page > 0){ page--; render(); }});
+  nextEl.addEventListener("click", function(){
+    const pages = Math.ceil(shoutouts.length / PAGE_SIZE);
+    if(page < pages - 1){ page++; render(); }
+  });
+
+  function process(resp){
+    const rows = (resp && resp.table && resp.table.rows) ? resp.table.rows : [];
+    const parsed = rows.map((r, idx) => {
+      const c = r.c || [];
+      return {
+        row: idx,
+        date: c[0] && c[0].v,
+        name: c[1] && c[1].v,
+        grade: c[2] && c[2].v,
+        house: c[3] && c[3].v,
+        message: c[4] && c[4].v,
+        submittedBy: c[5] && c[5].v
+      };
+    }).filter(x => x.name && x.house === "Ford Avenue" && x.message);
+
+    // Newest entries are the newest rows added to the Sheet.
+    shoutouts = parsed.reverse();
+    page = 0;
+    render();
+    return true;
+  }
+
+  function jsonp(url, onSuccess, onFail){
+    const cb = "jkShout_" + Date.now() + "_" + Math.floor(Math.random()*100000);
+    const s = document.createElement("script");
+    let finished = false;
+
+    function cleanup(){
+      try { delete window[cb]; } catch(e) {}
+      if (s.parentNode) s.parentNode.removeChild(s);
+    }
+
+    window[cb] = function(resp){
+      if (finished) return;
+      finished = true;
+      try { onSuccess(resp); } catch(e) { onFail(e); }
+      cleanup();
+    };
+
+    s.onerror = function(){
+      if (finished) return;
+      finished = true;
+      cleanup();
+      onFail(new Error("feed unavailable"));
+    };
+
+    s.src = url + (url.includes("?") ? "&" : "?") +
+      "tqx=responseHandler:" + cb + "&_=" + Date.now();
+    document.body.appendChild(s);
+  }
+
+  // Try the normal Sheet JSONP endpoint first. If Google blocks it,
+  // automatically fall back to the published-to-web endpoint.
+  const direct =
+    `https://docs.google.com/spreadsheets/d/${DIRECT_SHEET_ID}/gviz/tq?sheet=${encodeURIComponent("Shout-Outs")}`;
+  const published =
+    `https://docs.google.com/spreadsheets/d/e/${PUBLISHED_ID}/gviz/tq?gid=${GID}`;
+
+  jsonp(direct,
+    function(resp){ process(resp); },
+    function(){
+      jsonp(published,
+        function(resp){ process(resp); },
+        function(){
+          listEl.innerHTML = '<div class="shout-empty">Student shout-outs will appear here when the live Sheet is available.</div>';
+          prevEl.disabled = true;
+          nextEl.disabled = true;
+          pageEl.textContent = "LIVE";
+        }
+      );
+    }
+  );
+})();
+</script>
+
 </body>
 </html>
