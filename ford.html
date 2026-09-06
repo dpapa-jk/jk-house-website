@@ -44,63 +44,72 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
 .sub-events{left:60.3%;width:18.3%;}
 .sub-resources{left:78.8%;width:18.7%;}
 
-/* live standings overlay — clean full House Points card */
+/* live House Points — simple text, no inner boxes or standings button */
 .live-points{
  position:absolute;
  left:66.35%;
  top:39.15%;
  width:29.0%;
- height:15.55%;
- z-index:58;
- display:grid;
- grid-template-rows:50% 50%;
- gap:0;
+ height:16.65%;
+ z-index:70;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
  pointer-events:none;
  color:#0b2d63;
  text-align:center;
  box-sizing:border-box;
- background:#f1f3f6;
- border-radius:6px;
- border:1px solid #e0e4e9;
+ background:#ffffff;
+ border:0;
+ border-radius:0;
+ box-shadow:none;
  overflow:hidden;
- box-shadow:0 1px 2px rgba(0,0,0,.05);
 }
 .live-points .points-box,
 .live-points .standing-box{
  width:100%;
- height:100%;
- background:#f1f3f6;
+ background:transparent;
+ border:0;
+ box-shadow:none;
  display:flex;
  flex-direction:column;
  align-items:center;
  justify-content:center;
  box-sizing:border-box;
- overflow:hidden;
 }
-.live-points .points-box{ border-bottom:1px solid #d7dde5; }
+.live-points .points-box{
+ height:49%;
+ border-bottom:1px solid #b9c8dc;
+}
+.live-points .standing-box{
+ height:51%;
+}
 .points-total{
  font-weight:900;
- font-size:clamp(24px,3.6vw,58px);
+ font-size:clamp(27px,4.0vw,62px);
  line-height:.92;
  margin:0 0 2%;
 }
 .points-label{
  font-weight:900;
- font-size:clamp(8px,.95vw,15px);
+ font-size:clamp(8px,.98vw,15px);
  line-height:1;
  margin:0;
+ letter-spacing:.02em;
 }
 .standing{
  font-weight:900;
- font-size:clamp(18px,2.15vw,35px);
+ font-size:clamp(20px,2.4vw,39px);
  line-height:1;
  margin:0 0 2%;
 }
 .standing-label{
  font-weight:900;
- font-size:clamp(8px,.88vw,14px);
+ font-size:clamp(8px,.92vw,14px);
  line-height:1;
  margin:0;
+ letter-spacing:.04em;
 }
 
 /* bottom buttons */
@@ -226,7 +235,7 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
 
   <a class="nav nav-home" href="index.html" aria-label="Home"></a>
   <a class="nav nav-houses" href="index.html" aria-label="Our Houses"></a>
-  <a class="nav nav-cup" href="house-cup.html" aria-label="House Cup"></a>
+  
   <a class="nav nav-monday" href="monday-house.html" aria-label="Monday House"></a>
   <a class="nav nav-events" href="events.html" aria-label="Events"></a>
   <a class="nav nav-student" href="student-hub.html" aria-label="Student Hub"></a>
@@ -235,7 +244,7 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
 
   <a class="sub sub-home" href="ford.html" aria-label="House Home"></a>
   <a class="sub sub-members" href="#leadership" aria-label="Our Members"></a>
-  <a class="sub sub-points" href="house-cup.html" aria-label="Points and Standings"></a>
+  
   <a class="sub sub-events" href="events.html" aria-label="Events"></a>
   <a class="sub sub-resources" href="staff-hub.html" aria-label="House Resources"></a>
 
