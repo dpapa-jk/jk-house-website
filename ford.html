@@ -44,13 +44,13 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
 .sub-events{left:60.3%;width:18.3%;}
 .sub-resources{left:78.8%;width:18.7%;}
 
-/* live standings overlay — clean cover over the sample artwork */
+/* live standings overlay — clean full House Points card */
 .live-points{
  position:absolute;
  left:66.35%;
- top:36.65%;
+ top:39.15%;
  width:29.0%;
- height:18.35%;
+ height:15.55%;
  z-index:58;
  display:grid;
  grid-template-rows:50% 50%;
@@ -77,30 +77,28 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
  box-sizing:border-box;
  overflow:hidden;
 }
-.live-points .points-box{
- border-bottom:1px solid #d7dde5;
-}
+.live-points .points-box{ border-bottom:1px solid #d7dde5; }
 .points-total{
  font-weight:900;
- font-size:clamp(26px,4.1vw,64px);
+ font-size:clamp(24px,3.6vw,58px);
  line-height:.92;
  margin:0 0 2%;
 }
 .points-label{
  font-weight:900;
- font-size:clamp(8px,1vw,16px);
+ font-size:clamp(8px,.95vw,15px);
  line-height:1;
  margin:0;
 }
 .standing{
  font-weight:900;
- font-size:clamp(19px,2.35vw,38px);
+ font-size:clamp(18px,2.15vw,35px);
  line-height:1;
  margin:0 0 2%;
 }
 .standing-label{
  font-weight:900;
- font-size:clamp(8px,.92vw,15px);
+ font-size:clamp(8px,.88vw,14px);
  line-height:1;
  margin:0;
 }
@@ -252,7 +250,7 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
     </div>
   </div>
 
-  <a class="view-standings" href="house-cup.html" aria-label="View full standings"></a>
+  
   <a class="view-events" href="events.html" aria-label="View all events"></a>
   <a class="view-gallery" href="gallery.html" aria-label="View full gallery"></a>
 
