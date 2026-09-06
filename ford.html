@@ -44,58 +44,62 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
 .sub-events{left:60.3%;width:18.3%;}
 .sub-resources{left:78.8%;width:18.7%;}
 
-/* live standings overlay — opaque so the sample artwork underneath cannot show through */
+/* live House Points panel */
 .live-points{
- position:absolute;
- left:66.35%;
- top:39.65%;
- width:29.0%;
- height:15.55%;
- z-index:35;
- display:grid;
- grid-template-rows:52% 48%;
- gap:3%;
- pointer-events:none;
- color:#0b2d63;
- text-align:center;
- box-sizing:border-box;
+  position:absolute;
+  left:66.55%;
+  top:39.55%;
+  width:28.65%;
+  height:14.15%;
+  z-index:60;
+  background:#f3f5f8;
+  border-radius:6px;
+  box-sizing:border-box;
+  overflow:hidden;
+  display:grid;
+  grid-template-rows:1fr 1fr;
+  border:1px solid #e1e5eb;
+  box-shadow:0 1px 2px rgba(0,0,0,.05);
+  color:#0b2d63;
+  text-align:center;
+  pointer-events:none;
 }
 .live-points .points-box,
 .live-points .standing-box{
- width:100%;
- height:100%;
- background:linear-gradient(135deg,#f7f8fa,#edf0f4);
- border-radius:5px;
- display:flex;
- flex-direction:column;
- align-items:center;
- justify-content:center;
- box-sizing:border-box;
- overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:#f3f5f8;
+  box-sizing:border-box;
+  min-height:0;
+}
+.live-points .points-box{
+  border-bottom:1px solid #dfe4ea;
 }
 .points-total{
- font-weight:900;
- font-size:clamp(28px,4.6vw,72px);
- line-height:.92;
- margin:0;
+  font-weight:900;
+  font-size:clamp(24px,3.9vw,62px);
+  line-height:.95;
+  margin:0 0 1.5%;
 }
 .points-label{
- font-weight:900;
- font-size:clamp(8px,1.05vw,17px);
- line-height:1.05;
- margin-top:2%;
+  font-weight:900;
+  font-size:clamp(8px,.95vw,15px);
+  line-height:1;
+  margin:0;
 }
 .standing{
- font-weight:900;
- font-size:clamp(20px,2.55vw,42px);
- line-height:1;
- margin:0;
+  font-weight:900;
+  font-size:clamp(18px,2.25vw,36px);
+  line-height:1;
+  margin:0 0 2%;
 }
 .standing-label{
- font-weight:900;
- font-size:clamp(8px,1vw,16px);
- line-height:1.05;
- margin-top:3%;
+  font-weight:900;
+  font-size:clamp(8px,.9vw,14px);
+  line-height:1;
+  margin:0;
 }
 
 /* bottom buttons */
@@ -239,6 +243,11 @@ html,body{margin:0;padding:0;background:#eef2f5;font-family:Arial,sans-serif;ove
       <div class="points-total" id="fordPoints">--</div>
       <div class="points-label">TOTAL HOUSE POINTS</div>
     </div>
+    <div class="standing-box">
+      <div class="standing" id="fordStanding">--</div>
+      <div class="standing-label">CURRENT STANDING</div>
+    </div>
+  </div>
     <div class="standing-box">
       <div class="standing" id="fordStanding">--</div>
       <div class="standing-label">CURRENT STANDING</div>
