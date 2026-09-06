@@ -4,41 +4,244 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ford Avenue | Joyce Kilmer House Program</title>
+
 <style>
-*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f6f9;color:#10233f}
-a{color:inherit;text-decoration:none} .nav{height:68px;background:#063e35;color:#fff;display:flex;align-items:center;padding:0 4%;gap:34px;font-weight:800}
-.brand{font-size:22px;line-height:1.05;margin-right:auto} .brand small{display:block;font-size:11px;letter-spacing:3px}
-.nav a{font-size:13px} .hero{position:relative;overflow:hidden;min-height:285px;background:
-radial-gradient(circle at 18% 20%,rgba(255,255,255,.18),transparent 20%),
-linear-gradient(125deg,#0b3d78 0%,#1268b7 48%,#07356c 100%);color:#fff;display:grid;grid-template-columns:230px 1fr 230px;align-items:center;padding:28px 5%;gap:30px}
-.hero:before,.hero:after{content:"";position:absolute;border:3px solid rgba(255,255,255,.12);width:340px;height:340px;transform:rotate(45deg)}
-.hero:before{left:-170px;top:-160px} .hero:after{right:-170px;bottom:-180px}
-.crest{width:190px;height:210px;margin:auto;clip-path:polygon(50% 0,94% 17%,86% 72%,50% 100%,14% 72%,6% 17%);background:#072c59;border:8px solid #fff;outline:7px solid #0b2143;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;z-index:2}
-.crest-inner{font-weight:900;font-size:23px;line-height:1.05} .crest-inner .castle{font-size:56px;display:block;margin-bottom:6px}
-.hero-title{position:relative;z-index:2;text-align:center} .hero-title h1{font-family:Georgia,serif;font-size:68px;margin:0;letter-spacing:2px;text-shadow:0 3px 0 #06234a}
-.hero-title .motto{display:inline-block;border:3px solid #fff;padding:8px 35px;font-size:27px;font-weight:900;letter-spacing:5px;margin-top:8px}
-.hero-title .sub{margin-top:16px;letter-spacing:5px;font-weight:700;font-size:14px}
-.family{position:relative;z-index:2;text-align:center;font-family:Georgia,serif;font-size:28px;font-weight:900;line-height:1.15}
-.family span{display:block;font-size:15px;letter-spacing:3px;margin-top:10px}
-.wrap{max-width:1450px;margin:0 auto;padding:18px}
-.cards{display:grid;grid-template-columns:1.05fr 1.1fr 1.05fr 1fr;gap:14px}
-.card{background:#fff;border:1px solid #dbe2ea;border-radius:7px;overflow:hidden;min-height:270px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
-.card-head{height:54px;background:#0b5c9e;color:#fff;display:flex;align-items:center;padding:0 18px;font-weight:900;font-size:18px;letter-spacing:.5px}
-.card-head .ico{font-size:23px;margin-right:10px} .leader-body{padding:16px;display:flex;gap:16px;align-items:center}
-.leader-photo{width:116px;height:145px;object-fit:cover;object-position:center 20%;border-radius:50%;border:4px solid #d8a818}
-.leader-name{font-size:23px;font-weight:900;color:#0b3d78} .leader-role{font-size:13px;color:#687487;margin-top:4px}
-.advisors{font-size:13px;line-height:1.6;margin-top:14px;border-top:1px solid #e4e8ed;padding-top:11px}
-.body{padding:17px;font-size:14px;line-height:1.55} .about-text{min-height:145px}
-.live-note{font-size:10px;color:#758197;margin-top:10px} .shouts{padding:10px 14px} .shout{background:#f3f6fa;border-radius:5px;padding:9px 10px;margin-bottom:8px}
-.shout strong{color:#0b3d78} .shout small{display:block;margin-top:3px} .shout-controls{display:flex;justify-content:space-between;align-items:center;padding:0 14px 12px}
-button{border:0;background:#0b5c9e;color:white;border-radius:4px;padding:7px 10px;font-weight:800} button:disabled{opacity:.35}
-.events{padding:10px 15px} .event{display:grid;grid-template-columns:46px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid #e3e7ec} .date{text-align:center;font-weight:900;color:#0b5c9e}
-.pointsbar{margin-top:15px;background:linear-gradient(90deg,#073a73,#0b5c9e,#073a73);color:#fff;border-radius:7px;padding:13px 16px;display:grid;grid-template-columns:180px repeat(4,1fr);gap:9px;align-items:center}
-.cup-title{font-weight:900;font-size:19px} .cup-title small{display:block;font-size:10px;letter-spacing:1px}
-.rank{border:1px solid rgba(255,255,255,.38);padding:10px 8px;text-align:center;border-radius:4px;font-size:12px} .rank b{font-size:17px;margin-right:6px} .rank.ford{background:rgba(255,255,255,.14);border:2px solid #fff}
-.footer{margin-top:18px;background:#063e35;color:#fff;text-align:center;padding:18px;font-weight:800;letter-spacing:2px}
-@media(max-width:900px){.nav{gap:12px;overflow:auto}.hero{grid-template-columns:140px 1fr 150px;min-height:220px}.crest{width:130px;height:150px}.hero-title h1{font-size:42px}.hero-title .motto{font-size:18px}.family{font-size:20px}.cards{grid-template-columns:1fr 1fr}.pointsbar{grid-template-columns:1fr 1fr}.cup-title{grid-column:1/-1}}
+*{box-sizing:border-box}
+:root{
+  --navy:#062a52;
+  --blue:#0f5fa9;
+  --blue2:#1f79c7;
+  --ice:#eef5fb;
+  --gold:#d7ad28;
+  --green:#063e35;
+  --ink:#12233f;
+  --muted:#6f7f92;
+}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:
+  linear-gradient(180deg,#edf3f8 0,#f7f9fb 38%,#edf3f8 100%);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+.nav{
+  height:70px;background:linear-gradient(90deg,#063e35,#0b5144);color:#fff;
+  display:flex;align-items:center;padding:0 4%;gap:30px;font-weight:800;
+  box-shadow:0 3px 14px rgba(0,0,0,.16);position:relative;z-index:10
+}
+.brand{font-size:22px;line-height:1.02;margin-right:auto}
+.brand small{display:block;font-size:10px;letter-spacing:4px;margin-top:3px}
+.nav a{font-size:12px;letter-spacing:.5px;opacity:.95}
+.nav a:hover{opacity:1;text-decoration:underline}
+
+.hero{
+  position:relative;overflow:hidden;min-height:315px;
+  background:
+    radial-gradient(circle at 18% 35%,rgba(255,255,255,.12),transparent 23%),
+    radial-gradient(circle at 82% 10%,rgba(255,255,255,.08),transparent 18%),
+    linear-gradient(125deg,#0a3a70 0%,#1767ad 45%,#0b4b8b 100%);
+  color:#fff;display:grid;grid-template-columns:220px 1fr 250px;
+  align-items:center;padding:34px 5%;gap:28px
+}
+.hero:before{
+  content:"";position:absolute;inset:0;opacity:.13;
+  background-image:
+    linear-gradient(45deg,transparent 46%,#fff 47%,#fff 49%,transparent 50%),
+    linear-gradient(-45deg,transparent 46%,#fff 47%,#fff 49%,transparent 50%);
+  background-size:120px 120px
+}
+.hero:after{
+  content:"JK";position:absolute;right:4%;bottom:-68px;
+  font-family:Georgia,serif;font-size:250px;font-weight:900;color:rgba(255,255,255,.045)
+}
+.crest{
+  width:186px;height:214px;margin:auto;
+  clip-path:polygon(50% 0,94% 17%,86% 72%,50% 100%,14% 72%,6% 17%);
+  background:linear-gradient(180deg,#082c58,#031d3c);
+  border:8px solid #fff;outline:5px solid rgba(255,255,255,.22);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  position:relative;z-index:2;box-shadow:0 16px 30px rgba(0,0,0,.26)
+}
+.crest:before,.crest:after{
+  content:"";position:absolute;top:18px;width:22px;height:22px;border:3px solid rgba(255,255,255,.25)
+}
+.crest:before{left:25px}.crest:after{right:25px}
+.crest-inner{font-weight:900;font-size:22px;line-height:1.05}
+.crest-inner .castle{font-size:58px;display:block;margin-bottom:6px}
+.hero-title{position:relative;z-index:2;text-align:center}
+.hero-title h1{
+  font-family:Georgia,serif;font-size:66px;margin:0;letter-spacing:1px;
+  text-shadow:0 4px 0 #06264a,0 8px 18px rgba(0,0,0,.25)
+}
+.hero-title .motto{
+  display:inline-block;border:3px solid #fff;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.12);
+  padding:10px 38px;font-size:25px;font-weight:900;letter-spacing:5px;margin-top:10px
+}
+.hero-title .sub{
+  margin-top:18px;letter-spacing:5px;font-weight:800;font-size:13px;
+  color:#e7f2ff
+}
+.family{
+  position:relative;z-index:2;text-align:center;font-family:Georgia,serif;
+  font-size:30px;font-weight:900;line-height:1.15;
+  border-left:2px solid rgba(255,255,255,.35);padding-left:24px
+}
+.family span{display:block;font-size:13px;letter-spacing:4px;margin-top:12px;color:#e4f1ff}
+
+.wrap{max-width:1480px;margin:0 auto;padding:24px 18px 20px}
+.cards{
+  display:grid;grid-template-columns:1.02fr 1.18fr 1.12fr 1.10fr;
+  gap:15px;align-items:stretch
+}
+.card{
+  position:relative;background:#fff;border:1px solid #dce5ee;border-radius:12px;
+  overflow:hidden;min-height:282px;
+  box-shadow:0 8px 22px rgba(18,44,72,.10);
+  transition:transform .18s ease,box-shadow .18s ease
+}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(18,44,72,.15)}
+.card:before{
+  content:"";position:absolute;right:-34px;bottom:-45px;width:130px;height:130px;
+  border-radius:50%;background:rgba(15,95,169,.045)
+}
+.card-head{
+  height:58px;background:linear-gradient(90deg,#0a4d8d,#1672bf);
+  color:#fff;display:flex;align-items:center;padding:0 17px;
+  font-weight:900;font-size:17px;letter-spacing:.4px;position:relative
+}
+.card-head:after{
+  content:"";position:absolute;left:0;bottom:0;width:56px;height:4px;background:var(--gold)
+}
+.card-head .ico{
+  width:31px;height:31px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.16);font-size:18px;margin-right:10px
+}
+.leader-body{padding:16px;display:flex;gap:16px;align-items:center}
+.leader-photo{
+  width:112px;height:142px;object-fit:cover;object-position:center 20%;
+  border-radius:50%;border:4px solid #fff;
+  outline:4px solid var(--gold);box-shadow:0 5px 14px rgba(0,0,0,.14)
+}
+.leader-name{font-size:24px;font-weight:900;color:#0a477f}
+.leader-role{
+  display:inline-block;font-size:11px;color:#fff;background:#0f5fa9;
+  margin-top:6px;padding:4px 8px;border-radius:999px;font-weight:800
+}
+.advisors{
+  font-size:12.5px;line-height:1.55;margin-top:13px;border-top:1px solid #e5ebf1;padding-top:10px
+}
+.advisors b{color:#0a477f}
+.body{padding:18px;font-size:14px;line-height:1.56}
+.about-text{min-height:145px;position:relative;z-index:1}
+.about-text:before{
+  content:"“";font-family:Georgia,serif;font-size:82px;line-height:.6;
+  color:rgba(15,95,169,.12);float:left;margin:18px 6px -8px -4px
+}
+.live-note{
+  display:inline-block;font-size:10px;color:#0a5c9e;margin-top:10px;
+  background:#eef6fd;border:1px solid #d7eafb;padding:5px 8px;border-radius:999px
+}
+.shouts{padding:12px 14px}
+.shout{
+  background:linear-gradient(180deg,#f6f9fc,#edf4fa);
+  border-left:4px solid var(--gold);border-radius:7px;padding:10px 11px;margin-bottom:9px;
+  box-shadow:0 2px 7px rgba(18,44,72,.05)
+}
+.shout strong{color:#0b3d78}
+.shout small{display:block;margin-top:4px;line-height:1.35}
+.shout-controls{display:flex;justify-content:space-between;align-items:center;padding:0 14px 12px}
+button{
+  border:0;background:#0b5c9e;color:white;border-radius:999px;padding:7px 12px;font-weight:800
+}
+button:disabled{opacity:.3}
+.events{padding:9px 15px}
+.event{
+  display:grid;grid-template-columns:50px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid #e3e9ef
+}
+.event:last-child{border-bottom:0}
+.date{
+  text-align:center;font-weight:900;color:#0b5c9e;background:#edf6ff;
+  border-radius:7px;padding:5px 3px;border:1px solid #d7e9f8
+}
+.event b{color:#17375c}
+.points-card .body{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:220px}
+.points-number{
+  font-family:Georgia,serif;font-size:62px;font-weight:900;color:#0b5c9e;line-height:.95
+}
+.points-label{font-size:11px;letter-spacing:2px;color:#728195;font-weight:900;margin-top:8px}
+.points-place{
+  margin-top:15px;background:linear-gradient(90deg,#0b5c9e,#1978c9);color:#fff;
+  padding:8px 15px;border-radius:999px;font-weight:900;font-size:14px;
+  box-shadow:0 5px 12px rgba(11,92,158,.22)
+}
+.points-mini{font-size:10px;color:#7c8896;margin-top:10px}
+
+.pointsbar{
+  margin-top:18px;background:linear-gradient(90deg,#062d5b,#0a4e91,#062d5b);
+  color:#fff;border-radius:12px;padding:14px 16px;
+  display:grid;grid-template-columns:190px repeat(4,1fr);gap:9px;align-items:center;
+  box-shadow:0 8px 22px rgba(18,44,72,.14);position:relative;overflow:hidden
+}
+.pointsbar:after{
+  content:"";position:absolute;right:-40px;top:-70px;width:180px;height:180px;
+  border:2px solid rgba(255,255,255,.06);transform:rotate(45deg)
+}
+.cup-title{font-weight:900;font-size:19px;position:relative;z-index:1}
+.cup-title small{display:block;font-size:9px;letter-spacing:2px;margin-top:4px;color:#d9ecff}
+.rank{
+  position:relative;z-index:1;border:1px solid rgba(255,255,255,.26);
+  padding:11px 8px;text-align:center;border-radius:7px;font-size:11px;
+  background:rgba(255,255,255,.035)
+}
+.rank b{font-size:18px;margin-right:5px}
+.rank.ford{background:rgba(255,255,255,.13);border:2px solid #fff;box-shadow:inset 0 0 0 2px rgba(215,173,40,.22)}
+.footer{
+  margin-top:20px;background:linear-gradient(90deg,#05372f,#084a3e);color:#fff;
+  text-align:center;padding:19px;font-weight:900;letter-spacing:3px;font-size:13px
+}
+@media(max-width:1150px){
+  .cards{grid-template-columns:1fr 1fr 1fr}
+  .points-card{grid-column:span 1}
+}
+@media(max-width:900px){
+  .nav{gap:12px;overflow:auto}
+  .hero{grid-template-columns:140px 1fr 170px;min-height:235px}
+  .crest{width:132px;height:155px}
+  .hero-title h1{font-size:42px}
+  .hero-title .motto{font-size:17px;padding:8px 25px}
+  .family{font-size:21px}
+  .cards{grid-template-columns:1fr 1fr}
+  .pointsbar{grid-template-columns:1fr 1fr}
+  .cup-title{grid-column:1/-1}
+}
 </style>
+
+
+<style>
+/* Approved Ford Avenue visual direction */
+.hero{
+  min-height:300px;
+  background:
+    linear-gradient(110deg,rgba(2,31,68,.20),rgba(17,104,184,.08)),
+    repeating-linear-gradient(135deg,rgba(255,255,255,.035) 0 3px,transparent 3px 18px),
+    linear-gradient(125deg,#07366c 0%,#1269b6 47%,#052c5c 100%)!important;
+}
+.hero-title h1{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif!important;font-size:72px!important;letter-spacing:3px!important}
+.hero-title .motto{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;letter-spacing:7px!important}
+.crest{border-color:#f8fbff!important;outline:5px solid #123d72!important}
+.cards{grid-template-columns:1.02fr 1.18fr 1.12fr 1.10fr!important}
+.card{background:
+  linear-gradient(rgba(255,255,255,.94),rgba(255,255,255,.94)),
+  repeating-linear-gradient(135deg,#dfeaf5 0 2px,transparent 2px 12px)!important}
+.card-head{font-family:Impact,Haettenschweiler,'Arial Narrow Bold',sans-serif;letter-spacing:1px!important;font-size:19px!important}
+.event-points{margin:5px 14px 14px;border:1px solid #d4e4f3;border-radius:9px;overflow:hidden;display:grid;grid-template-columns:105px 1fr;background:#eef6fd}
+.event-points-label{background:linear-gradient(180deg,#e8f3fc,#d8ebfa);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#0a4784;font-size:16px;line-height:1.05;padding:12px 5px}
+.event-points-score{text-align:center;padding:8px 10px;background:rgba(255,255,255,.7)}
+.event-points-score .points-number{font-size:42px}
+.event-points-score .points-place{margin:7px auto 0;padding:5px 12px;font-size:12px;display:inline-block}
+.pointsbar{border-top:3px solid #d7ad28!important}
+.rank.ford{border-color:#e0b529!important;box-shadow:inset 0 0 0 1px #e0b529!important}
+.footer:before{content:"JK  •  EST. 1967";float:left;font-size:10px;letter-spacing:1px;opacity:.8}
+@media(max-width:1100px){.cards{grid-template-columns:1fr 1fr!important}}
+</style>
+
 </head>
 <body>
 <div class="nav">
@@ -83,6 +286,14 @@ button{border:0;background:#0b5c9e;color:white;border-radius:4px;padding:7px 10p
       <div class="event"><div class="date">OCT<br>14</div><div><b>Fall Service Project</b><br><small>More details coming soon!</small></div></div>
       <div class="event"><div class="date">NOV<br>10</div><div><b>Kindness Week</b><br><small>House Competition</small></div></div>
     </div>
+    <div class="event-points">
+      <div class="event-points-label">🏆<br><b>HOUSE<br>POINTS</b></div>
+      <div class="event-points-score">
+        <div class="points-number" id="fordPoints">—</div>
+        <div class="points-label">TOTAL HOUSE POINTS</div>
+        <div class="points-place" id="fordPlace">Loading standing…</div>
+      </div>
+    </div>
   </section>
 </div>
 
@@ -116,7 +327,7 @@ function renderShouts(){
  const box=document.getElementById('shoutList'), size=3, pages=Math.max(1,Math.ceil(shouts.length/size));
  pg=Math.max(0,Math.min(pg,pages-1));
  const items=shouts.slice(pg*size,pg*size+size);
- box.innerHTML=items.length?items.map(x=>`<div class="shout"><strong>${x.name} • ${x.grade}th Grade</strong><small>${x.msg}</small></div>`).join(''):'<div class="shout">No Ford Avenue shout-outs yet.</div>';
+ box.innerHTML=items.length?items.map(x=>`<div class="shout"><strong>★ &nbsp;${x.name} • ${x.grade}th Grade</strong><small>${x.msg}</small></div>`).join(''):'<div class="shout">No Ford Avenue shout-outs yet.</div>';
  document.getElementById('prev').disabled=pg===0; document.getElementById('next').disabled=pg>=pages-1;
  document.getElementById('pageLabel').textContent=pg===0?'Latest':`${pg+1} of ${pages}`;
 }
@@ -133,6 +344,11 @@ jsonp('https://docs.google.com/spreadsheets/d/1Jquf820HH6y39T5j-bfb3g761HAaZA2CQ
  let houses=rows.slice(0,4).map(c=>({house:String(cell(c,0)),pts:Number(cell(c,1))})).filter(x=>x.house&&Number.isFinite(x.pts));
  houses.sort((a,b)=>b.pts-a.pts);
  const ord=['1st','2nd','3rd','4th'];
+ const fordIndex=houses.findIndex(x=>x.house==='Ford Avenue');
+ if(fordIndex>=0){
+   document.getElementById('fordPoints').textContent=houses[fordIndex].pts;
+   document.getElementById('fordPlace').textContent=ord[fordIndex]+' Place';
+ }
  document.getElementById('standings').innerHTML='<div class="cup-title">🏆 HOUSE CUP<small>CURRENT STANDINGS • LIVE</small></div>'+houses.map((x,i)=>`<div class="rank ${x.house==='Ford Avenue'?'ford':''}"><b>${ord[i]}</b>${x.house}<br><strong>${x.pts} pts</strong></div>`).join('');
 });
 </script>
