@@ -12,17 +12,47 @@ html,body{margin:0;background:#eef3f7;font-family:Arial,sans-serif;color:#082d5c
 .teachers{border-top:2px solid #f4c21d;margin:3% 6% 0;padding-top:2.6%;line-height:1.7;font-size:clamp(8px,.98vw,15px)} .teachers b{display:block}
 #about{left:24.35%;top:39.65%;width:24.93%;height:41.11%;padding:1.4% 2.25%;box-sizing:border-box;font-size:clamp(9px,1.05vw,16px);line-height:1.45}
 .aboutline{border-top:3px solid #f4c21d;margin-top:5%;padding-top:4%}
-.motto{margin-top:3%;min-height:38%;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:1000;font-size:clamp(20px,2.7vw,42px);line-height:.9;letter-spacing:-.03em;color:#fff;text-shadow:3px 3px 0 #082d5c,-2px -2px 0 #082d5c,2px -2px 0 #082d5c,-2px 2px 0 #082d5c;background:linear-gradient(135deg,#0868c8 0%,#0b4b93 55%,#082d5c 100%);border:4px solid #f4c21d;clip-path:polygon(4% 0,96% 0,100% 18%,96% 100%,4% 100%,0 82%,0 18%);box-shadow:inset 0 0 0 3px #fff3;padding:6% 5%;box-sizing:border-box;text-transform:uppercase}
+.motto{margin-top:3%;height:41%;background:url("ford-built-tough.png") center/contain no-repeat;}
 #shouts{left:50.65%;top:39.65%;width:23.18%;height:41.11%;padding:.8% .9%;box-sizing:border-box}
 .shout{display:grid;grid-template-columns:23% 1fr;background:#e8f3fc;border-radius:7px;overflow:hidden}.star{background:#d6eafd;display:flex;align-items:center;justify-content:center;color:#0757a5;font-size:clamp(14px,1.7vw,26px)}.shouttxt{padding:4%}.shouttxt b{color:#0757a5;font-size:clamp(8px,.9vw,14px)}.shouttxt small{display:block;margin-top:3%;font-size:clamp(7px,.78vw,12px)}
 .shoutnote{text-align:center;margin-top:5%;color:#58708c;font-size:clamp(7px,.8vw,13px)}.shout + .shout{margin-top:2.5%}.shoutnav{position:absolute;left:8%;right:8%;bottom:8%;display:flex;justify-content:center;gap:3%}.shoutnav button{background:#0757a5;color:#fff;border:0;border-radius:5px;padding:2.5% 5%;font-size:clamp(7px,.76vw,12px);font-weight:900}.shoutnav button:disabled{opacity:.35}.viewbtn{position:absolute;left:14%;right:14%;bottom:9%;background:#0757a5;color:#fff;text-align:center;padding:3%;font-size:clamp(7px,.82vw,13px);font-weight:900;border-radius:6px}
 #events{left:75.2%;top:39.65%;width:22.72%;height:41.11%;padding:2.3% 2.5%;box-sizing:border-box;text-align:center}.coming{color:#0757a5;font-size:clamp(12px,1.4vw,22px);font-weight:900}.eventnote{color:#58708c;font-size:clamp(7px,.8vw,13px);line-height:1.45}
 .points{position:absolute;left:3.5%;right:3.5%;bottom:2.5%;height:34%;background:#edf6fd;border:1px solid #c6ddeb;border-radius:8px;display:grid;grid-template-columns:38% 1fr;overflow:hidden}.pointsL{background:#d9ecfa;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:clamp(10px,1.3vw,20px);line-height:1.25}.pointsR{display:flex;flex-direction:column;align-items:center;justify-content:center}.pts{font-size:clamp(20px,3.2vw,50px);font-weight:900}.plac{background:#0757a5;color:#fff;padding:2% 16%;font-weight:900;border-radius:4px;font-size:clamp(10px,1.25vw,20px)}
 #ranks{position:absolute;left:19.8%;top:83.1%;width:77.5%;height:7.65%;display:grid;grid-template-columns:1.02fr 1fr 1.1fr 1.45fr;gap:.55%;align-items:center}.rank{height:90%;border:1px solid #73a5d5;border-radius:6px;color:#fff;display:flex;align-items:center;padding:0 7%;box-sizing:border-box;gap:6%;font-size:clamp(7px,.8vw,13px)}.rank strong{font-size:clamp(14px,1.9vw,29px)}.rank.ford{background:#f4c21d;color:#082d5c;border:none;clip-path:polygon(5% 0,100% 0,94% 100%,0 100%)}.rank .rtext{line-height:1.35}
+
+.navhot{position:absolute;top:.4%;height:5.5%;z-index:30;display:block;-webkit-tap-highlight-color:rgba(255,255,255,.2)}
+.nav-home{left:34.0%;width:5.8%}
+.nav-houses{left:40.0%;width:8.2%}
+.nav-cup{left:48.7%;width:7.2%}
+.nav-monday{left:56.3%;width:9.2%}
+.nav-events{left:66.0%;width:6.3%}
+.nav-student{left:72.8%;width:8.4%}
+.nav-staff{left:81.6%;width:7.4%}
+.nav-gallery{left:89.4%;width:7.7%}
+
+#standingsMask{
+  position:absolute;left:1.55%;top:81.75%;width:96.9%;height:9.0%;
+  background:#062f61;border-radius:9px;z-index:12;
+  box-sizing:border-box;border:1px solid #0b4b8d;
+  display:grid;grid-template-columns:18.5% 1fr;align-items:center;
+  padding:.7% .8%;
+}
+.cupLabel{color:#fff;display:flex;align-items:center;gap:7%;font-weight:900}
+.cupTrophy{font-size:clamp(18px,2.4vw,36px);color:#f4c21d}
+.cupTitle{font-size:clamp(12px,1.4vw,22px);line-height:1.05}
+.cupSub{font-size:clamp(6px,.65vw,10px);letter-spacing:.08em;margin-top:4%}
+#liveRanks{display:grid;grid-template-columns:repeat(4,1fr);gap:.7%;height:82%}
+.liveRank{border:1px solid #78a8d8;border-radius:7px;color:#fff;display:flex;align-items:center;gap:7%;padding:0 6%;box-sizing:border-box;overflow:hidden}
+.liveRank.first{background:#f4c21d;color:#082d5c;border:none}
+.liveRank .place{font-weight:1000;font-size:clamp(14px,2vw,30px);white-space:nowrap}
+.liveRank .house{font-size:clamp(7px,.82vw,13px);line-height:1.12}
+.liveRank .house b{display:block;margin-top:2%}
+.footer-est-mask{position:absolute;right:0;bottom:0;width:13%;height:7.7%;background:#06483f;z-index:11}
+
 </style></head><body>
 <div class="stage">
 <div id="leader" class="overlay"><img src="mrs-nehila.jpeg" alt="Mrs. Nehila"><div class="name">Mrs. Nehila</div><div class="role">HOUSE LEADER</div><div class="teachers"><b>HOUSE ADVISORY TEACHERS</b>Mrs. Papa &nbsp; • &nbsp; Ms. Weinstein<br>Ms. Harrs &nbsp; • &nbsp; Ms. O’Brien<br>Ms. Fratianni &nbsp; • &nbsp; Ms. Arias</div></div>
-<div id="about" class="overlay">Ford Avenue is made up of students who show strength, determination, and a commitment to doing what’s right. We support each other, work hard, and face challenges with a positive attitude. At Ford Avenue, we are always stronger together.<div class="aboutline"></div><div class="motto">BUILT<br>TOUGH.</div></div>
+<div id="about" class="overlay">Ford Avenue is made up of students who show strength, determination, and a commitment to doing what’s right. We support each other, work hard, and face challenges with a positive attitude. At Ford Avenue, we are always stronger together.<div class="aboutline"></div><div class="motto" aria-label="Built Tough"></div></div>
 <div id="shouts" class="overlay">
   <div id="shoutList"><div class="shoutnote">Loading live Ford Avenue shout-outs…</div></div>
   <div class="shoutnav">
@@ -31,7 +61,26 @@ html,body{margin:0;background:#eef3f7;font-family:Arial,sans-serif;color:#082d5c
   </div>
 </div>
 <div id="events" class="overlay"><b>UPCOMING EVENTS</b><p class="coming">Coming soon!</p><p class="eventnote">Real Ford Avenue events will appear here when they are added to the website feed.</p><div class="points"><div class="pointsL">🏆<br>HOUSE<br>POINTS</div><div class="pointsR"><div class="pts" id="fordPts">11</div><small>TOTAL HOUSE POINTS</small><div class="plac" id="fordPlace">1st PLACE</div></div></div></div>
-<div id="ranks"><div class="rank ford"><strong>1st</strong><div class="rtext">Ford Avenue<br><b>11 pts</b></div></div><div class="rank"><strong>2nd</strong><div class="rtext">Violet Terrace<br>10 pts</div></div><div class="rank"><strong>3rd</strong><div class="rtext">Albert Avenue<br>8 pts</div></div><div class="rank"><strong>4th</strong><div class="rtext">Highland Drive<br>3 pts</div></div></div>
+
+
+<a class="navhot nav-home" href="index.html" aria-label="Home"></a>
+<a class="navhot nav-houses" href="index.html#houses" aria-label="Our Houses"></a>
+<a class="navhot nav-cup" href="house-cup.html" aria-label="House Cup"></a>
+<a class="navhot nav-monday" href="monday-house.html" aria-label="Monday House"></a>
+<a class="navhot nav-events" href="events.html" aria-label="Events"></a>
+<a class="navhot nav-student" href="student-hub.html" aria-label="Student Hub"></a>
+<a class="navhot nav-staff" href="staff-hub.html" aria-label="Staff Hub"></a>
+<a class="navhot nav-gallery" href="gallery.html" aria-label="Gallery"></a>
+
+<div id="standingsMask">
+  <div class="cupLabel">
+    <div class="cupTrophy">🏆</div>
+    <div><div class="cupTitle">HOUSE CUP</div><div class="cupSub">CURRENT STANDINGS • LIVE</div></div>
+  </div>
+  <div id="liveRanks"></div>
+</div>
+<div class="footer-est-mask"></div>
+
 </div>
 
 <script>
@@ -123,5 +172,39 @@ gviz(SHOUTS_SHEET,'Shout-Outs',data=>{
   shoutPage=0;
   renderShouts();
 });
+
+const STANDINGS_SHEET='1Jquf820HH6y39T5j-bfb3g761HAaZA2CQKBMGXqSDos';
+
+function ordinal(n){
+  return n===1?'1st':n===2?'2nd':n===3?'3rd':`${n}th`;
+}
+
+function renderStandings(items){
+  const box=document.getElementById('liveRanks');
+  box.innerHTML=items.map((x,i)=>`
+    <div class="liveRank ${i===0?'first':''}">
+      <div class="place">${ordinal(i+1)}</div>
+      <div class="house">${esc(x.house)}<b>${esc(x.points)} pts</b></div>
+    </div>`).join('');
+
+  const ford=items.find(x=>norm(x.house)===norm('Ford Avenue'));
+  if(ford){
+    document.getElementById('fordPts').textContent=ford.points;
+    const pos=items.findIndex(x=>norm(x.house)===norm('Ford Avenue'))+1;
+    document.getElementById('fordPlace').textContent=ordinal(pos).toUpperCase()+' PLACE';
+  }
+}
+
+gviz(STANDINGS_SHEET,'Sheet1',data=>{
+  const rows=(data.table.rows||[]).map(r=>(r.c||[]).map(c=>c?c.v:null));
+  const wanted=['Ford Avenue','Violet Terrace','Albert Avenue','Highland Drive'];
+  const items=rows
+    .filter(r=>wanted.some(h=>norm(r[0])===norm(h)))
+    .map(r=>({house:String(r[0]||''),points:Number(r[1]||0)}))
+    .filter(x=>x.house && Number.isFinite(x.points))
+    .sort((a,b)=>b.points-a.points || a.house.localeCompare(b.house));
+  if(items.length===4) renderStandings(items);
+});
+
 </script>
 </body></html>
