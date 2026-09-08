@@ -14,8 +14,8 @@ body{margin:0;background:#f5f5f2;color:var(--ink);font-family:Arial,Helvetica,sa
 .nav{display:flex;flex:1;justify-content:flex-end;height:100%}
 .nav a{display:flex;align-items:center;padding:0 18px;color:white;text-decoration:none;font-weight:900;font-size:14px;white-space:nowrap}
 .nav a:hover,.nav a.active{background:var(--gold);color:#111}
-.hero{position:relative;background:#e9b900 url('highland-hero.png') center/cover no-repeat;aspect-ratio:1536/304;min-height:250px}
-.family{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:#171717e8;color:white;padding:9px 24px;font-weight:900;letter-spacing:.22em;font-size:clamp(10px,1.1vw,17px);white-space:nowrap}
+.hero{position:relative;background:#e9b900 url('highland-hero.png') center/100% 100% no-repeat;aspect-ratio:1536/334;min-height:250px}
+.family{display:none}
 .content{padding:22px 3% 0}
 .grid3{display:grid;grid-template-columns:1.05fr .95fr 1.05fr;gap:22px}
 .card{border:1px solid #cfcfcf;border-radius:9px;background:#fff;overflow:hidden;min-height:330px}
@@ -42,7 +42,7 @@ body{margin:0;background:#f5f5f2;color:var(--ink);font-family:Arial,Helvetica,sa
 .lightbox{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:99;padding:25px}.lightbox.open{display:flex}.lightbox img{max-width:94vw;max-height:90vh;object-fit:contain}.close{position:absolute;right:22px;top:15px;color:#fff;font-size:40px;cursor:pointer}
 @media(max-width:900px){
  .topbar{height:auto;display:block;padding:10px}.brand{display:inline-block}.nav{overflow-x:auto;justify-content:flex-start;margin-top:8px}.nav a{padding:12px}
- .hero{min-height:220px}.grid3,.grid2{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}
+ .hero{position:relative;background:#e9b900 url('highland-hero.png') center/100% 100% no-repeat;aspect-ratio:1536/334;min-height:250px}.grid3,.grid2{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)}
  .standings{grid-template-columns:repeat(2,1fr)}.footer{grid-template-columns:1fr;text-align:center;gap:14px}.footer .values{text-align:center}
 }
 </style>
@@ -63,9 +63,7 @@ body{margin:0;background:#f5f5f2;color:var(--ink);font-family:Arial,Helvetica,sa
   </nav>
 </header>
 
-<section class="hero">
-  <div class="family">FOUR HOUSES. ONE FAMILY.</div>
-</section>
+<section class="hero" aria-label="Highland Drive — Rise Above. Reach Beyond. Four Houses. One Family."></section>
 
 <main class="content">
   <section class="grid3">
@@ -89,7 +87,7 @@ body{margin:0;background:#f5f5f2;color:var(--ink);font-family:Arial,Helvetica,sa
     </article>
 
     <article class="card">
-      <div class="head">About Our House</div>
+      <div class="head">About Our House • Live</div>
       <div class="about" id="aboutText">
         Highland Drive is a house of high standards, big dreams, and even bigger possibilities. We rise above challenges, support one another, and reach beyond what we think is possible.
         <div class="motto">RISE ABOVE. REACH BEYOND.</div>
@@ -109,7 +107,7 @@ body{margin:0;background:#f5f5f2;color:var(--ink);font-family:Arial,Helvetica,sa
     </article>
 
     <article class="card">
-      <div class="head">Student Shout-Outs</div>
+      <div class="head">Student Shout-Outs • Live</div>
       <div class="shouts" id="shouts"><div class="empty">Highland Drive shout-outs will appear here automatically.</div></div>
       <div class="shoutnav"><button id="prevShout">‹ PREVIOUS</button><button id="nextShout">NEXT ›</button></div>
     </article>
@@ -174,11 +172,14 @@ gviz(STANDINGS_SHEET,'Sheet1',data=>{
 
 gviz(ABOUT_SHEET,'House About',data=>{
   const rows=tableRows(data);
-  const r=rows.find(x=>Object.values(x).some(v=>/highland drive/i.test(String(v||''))));
+  const r=rows.find(row=>norm(row['House'])===norm('Highland Drive'));
   if(!r) return;
-  const vals=Object.values(r).filter(Boolean);
-  const text=vals.find(v=>String(v).length>40);
-  if(text) document.getElementById('aboutText').innerHTML=`${text}<div class="motto">RISE ABOVE. REACH BEYOND.</div>`;
+  const text=String(r['About Our House']||'').trim();
+  if(text){
+    document.getElementById('aboutText').innerHTML=
+      `<div class="livecopy">${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`+
+      `<div class="motto">RISE ABOVE. REACH BEYOND.</div>`;
+  }
 });
 
 let shoutPages=[], shoutPage=0;
@@ -186,17 +187,26 @@ function renderShouts(){
   const box=document.getElementById('shouts');
   const page=shoutPages[shoutPage]||[];
   if(!page.length){box.innerHTML='<div class="empty">Highland Drive shout-outs will appear here automatically.</div>';return}
-  box.innerHTML=page.map(x=>`<div class="shout"><div class="star">★</div><div><b>${x.name}${x.grade?' • '+x.grade+'th Grade':''}</b><small>${x.msg}</small></div></div>`).join('');
+  box.innerHTML=page.map(x=>`<div class="shout"><div class="star">★</div><div><b>${x.name}${x.grade?' • '+(/^\\d+$/.test(x.grade)?x.grade+'th Grade':x.grade):''}</b><small>${x.msg}</small></div></div>`).join('');
   document.getElementById('prevShout').disabled=shoutPage===0;
   document.getElementById('nextShout').disabled=shoutPage>=shoutPages.length-1;
 }
 gviz(SHOUTS_SHEET,'Shout-Outs',data=>{
-  const rows=tableRows(data).filter(r=>Object.values(r).some(v=>/highland drive/i.test(String(v||''))));
-  const parsed=rows.map(r=>{
-    const get=(re)=>Object.entries(r).find(([k])=>re.test(k))?.[1]||'';
-    return {name:get(/student.*name|name/i),grade:get(/grade/i),msg:get(/shout/i)};
-  }).filter(x=>x.name&&x.msg).reverse();
-  shoutPages=[]; for(let i=0;i<parsed.length;i+=3) shoutPages.push(parsed.slice(i,i+3));
+  const rows=tableRows(data)
+    .filter(r=>norm(r['House'])===norm('Highland Drive'))
+    .map(r=>({
+      date:r['Date']||'',
+      name:String(r['Student Name']||'').trim(),
+      grade:String(r['Grade']||'').trim(),
+      msg:String(r['Shout-Out']||'').trim()
+    }))
+    .filter(x=>x.name&&x.msg);
+
+  // Latest entries first. If dates are equal/blank, newer sheet rows stay ahead.
+  const parsed=rows.reverse();
+  shoutPages=[];
+  for(let i=0;i<parsed.length;i+=3) shoutPages.push(parsed.slice(i,i+3));
+  shoutPage=0;
   renderShouts();
 });
 document.getElementById('prevShout').onclick=()=>{if(shoutPage>0){shoutPage--;renderShouts()}};
