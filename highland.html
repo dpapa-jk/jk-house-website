@@ -88,10 +88,7 @@ body{margin:0;background:#f5f5f2;color:var(--ink);font-family:Arial,Helvetica,sa
 
     <article class="card">
       <div class="head">About Our House • Live</div>
-      <div class="about" id="aboutText">
-        Highland Drive is a house of high standards, big dreams, and even bigger possibilities. We rise above challenges, support one another, and reach beyond what we think is possible.
-        <div class="motto">RISE ABOVE. REACH BEYOND.</div>
-      </div>
+      <div class="about" id="aboutText"><div class="livecopy">Loading live About Our House content…</div><div class="motto">RISE ABOVE. REACH BEYOND.</div></div>
     </article>
   </section>
 
@@ -138,7 +135,7 @@ function gviz(sheetId, sheetName, callback){
   const cb='cb_'+Math.random().toString(36).slice(2);
   window[cb]=data=>{try{callback(data)}finally{delete window[cb];s.remove()}};
   const s=document.createElement('script');
-  s.src=`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${encodeURIComponent(sheetName)}&tqx=responseHandler:${cb}&_=${Date.now()}`;
+  s.src=`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${encodeURIComponent(sheetName)}&headers=1&tqx=responseHandler:${cb}&_=${Date.now()}`;
   s.onerror=()=>{delete window[cb];s.remove()};
   document.body.appendChild(s);
 }
@@ -171,13 +168,18 @@ gviz(STANDINGS_SHEET,'Sheet1',data=>{
 });
 
 gviz(ABOUT_SHEET,'House About',data=>{
-  const rows=tableRows(data);
-  const r=rows.find(row=>norm(row['House'])===norm('Highland Drive'));
-  if(!r) return;
-  const text=String(r['About Our House']||'').trim();
+  const rows=(data.table.rows||[]).map(r=>(r.c||[]).map(c=>c?c.v:null));
+  const row=rows.find(r=>norm(r[0])===norm('Highland Drive'));
+  if(!row) return;
+  const text=String(row[1]||'').trim();
+  const box=document.getElementById('aboutText');
   if(text){
-    document.getElementById('aboutText').innerHTML=
-      `<div class="livecopy">${text.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`+
+    box.innerHTML=
+      `<div class="livecopy">${text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`+
+      `<div class="motto">RISE ABOVE. REACH BEYOND.</div>`;
+  } else {
+    box.innerHTML=
+      `<div class="livecopy">About Our House content has not been added yet.</div>`+
       `<div class="motto">RISE ABOVE. REACH BEYOND.</div>`;
   }
 });
