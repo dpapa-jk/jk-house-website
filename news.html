@@ -17,7 +17,7 @@ body{margin:0;background:#f5f1e7;color:#0b2f29;font-family:Arial,Helvetica,sans-
 .feed-status{text-align:center;padding:24px;font-weight:700;color:#5a6a65}
 .featured{border:5px solid #075143;border-radius:18px;background:#fff;overflow:hidden;margin-bottom:20px;box-shadow:0 8px 28px rgba(0,0,0,.12)}
 .featured-inner{display:grid;grid-template-columns:240px 1fr;min-height:280px}
-.feature-side{display:flex;align-items:center;justify-content:center;padding:24px;font-weight:900;font-size:28px;text-align:center;line-height:1.05}
+.feature-side{display:flex;align-items:center;justify-content:center;padding:24px;font-weight:900;font-size:28px;text-align:center;line-height:1.05;position:relative;overflow:hidden}
 .feature-body{padding:28px 32px}
 .date{font-size:14px;font-weight:700;color:#315c54;margin-bottom:10px}
 .headline{font-size:clamp(30px,4vw,52px);line-height:.98;margin:0 0 14px;font-weight:900;color:#082f2a}
@@ -25,10 +25,13 @@ body{margin:0;background:#f5f1e7;color:#0b2f29;font-family:Arial,Helvetica,sans-
 .house-tag{display:inline-block;margin-top:18px;padding:8px 13px;border-radius:999px;font-weight:800;font-size:13px;background:#f1ead9;color:#123d36}
 .news-list{display:grid;gap:14px}
 .news-card{display:grid;grid-template-columns:165px 1fr;min-height:150px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)}
-.news-side{display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-weight:900;font-size:20px;line-height:1.05}
+.news-side{display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-weight:900;font-size:20px;line-height:1.05;position:relative;overflow:hidden}
 .news-body{padding:22px 26px}
 .news-card h2{margin:4px 0 8px;font-size:28px;line-height:1.05;color:#11264d}
 .news-card p{margin:0;color:#243d38;line-height:1.42;font-size:16px;white-space:pre-wrap}
+.side-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.type-badge{position:absolute;left:10px;bottom:10px;z-index:2;background:rgba(3,76,63,.92);color:#fff;border:2px solid rgba(255,255,255,.9);padding:7px 10px;border-radius:999px;font-weight:900;font-size:11px;letter-spacing:.5px;line-height:1}
+.feature-side .type-badge{left:14px;bottom:14px;font-size:12px;padding:8px 12px}
 .footer{background:#034c3f;color:#fff;text-align:center;padding:28px 16px;font-size:14px;letter-spacing:1.7px;font-weight:700}
 .type-New-Challenge,.type-Upcoming-Event{background:#f4bf3a;color:#102e29}
 .type-Points-Update{background:#0f4a8a;color:white}
@@ -43,9 +46,9 @@ body{margin:0;background:#f5f1e7;color:#0b2f29;font-family:Arial,Helvetica,sans-
  .topbar{align-items:flex-start;flex-direction:column}
  .nav{gap:12px}
  .featured-inner{grid-template-columns:1fr}
- .feature-side{min-height:100px}
+ .feature-side{min-height:190px}
  .news-card{grid-template-columns:1fr}
- .news-side{min-height:80px}
+ .news-side{min-height:170px}
 }
 </style>
 </head>
@@ -77,18 +80,53 @@ body{margin:0;background:#f5f1e7;color:#0b2f29;font-family:Arial,Helvetica,sans-
 const SHEET_ID = '19gk6tt_gc8vAfCV7YRwt041thg90m3uq4MvDONIR34Q';
 const SHEET_NAME = 'Knight News';
 const callbackName = 'renderKnightNews';
+const PHOTO_FEED = 'https://script.google.com/macros/s/AKfycbzGvzVi3GC7lEF4vkjPy5RAcTJAQ3OHx7HqbCIElhfYkYsR6cy0MTHPfVO0gsQ0T9WasA/exec';
+
+let photoMap = {};
 
 function clean(v){ return (v ?? '').toString().trim(); }
 function slug(v){ return clean(v).replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,''); }
 function typeLabel(type){ return clean(type).toUpperCase() || 'KNIGHT NEWS'; }
 function parseDate(v){ if (!v) return new Date(0); const d=new Date(v); return isNaN(d)?new Date(0):d; }
 function formatDate(v){ const d=parseDate(v); if(d.getTime()===0) return clean(v); return d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}); }
+function photoKey(v){ return clean(v).replace(/\.[^/.]+$/,'').toLowerCase(); }
+function esc(v){
+  return clean(v).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function photoPanel(photoName,type,featured=false){
+  const url=photoMap[photoKey(photoName)];
+  const sideClass=featured?'feature-side':'news-side';
+  if(url){
+    return `<div class="${sideClass}">
+      <img class="side-photo" src="${esc(url)}" alt="${esc(photoName)}">
+      <span class="type-badge">${esc(typeLabel(type))}</span>
+    </div>`;
+  }
+  return `<div class="${sideClass} type-${slug(type)}">${esc(typeLabel(type))}</div>`;
+}
 
-window[callbackName] = function(resp){
+async function loadPhotoFeed(){
+  try{
+    const res = await fetch(`${PHOTO_FEED}?_=${Date.now()}`, {cache:'no-store'});
+    if(!res.ok) throw new Error('Photo feed unavailable');
+    const photos = await res.json();
+    if(Array.isArray(photos)){
+      photos.forEach(p=>{
+        if(p && p.name && p.url) photoMap[photoKey(p.name)] = p.url;
+      });
+    }
+  }catch(e){
+    console.warn('Knight News photo feed unavailable; using type panels.', e);
+  }
+}
+
+window[callbackName] = async function(resp){
   const status=document.getElementById('feedStatus');
   const featuredSlot=document.getElementById('featuredSlot');
   const list=document.getElementById('newsList');
   try {
+    await loadPhotoFeed();
+
     const rows=(resp.table.rows||[]).map(r=>{
       const c=r.c||[];
       return {
@@ -96,7 +134,8 @@ window[callbackName] = function(resp){
         headline:c[1]?.v||'',
         announcement:c[2]?.v||'',
         type:c[3]?.v||'',
-        house:c[4]?.v||''
+        house:c[4]?.v||'',
+        photo:c[5]?.v||''
       };
     }).filter(x=>clean(x.headline)||clean(x.announcement));
 
@@ -109,27 +148,28 @@ window[callbackName] = function(resp){
     featuredSlot.innerHTML=`
       <article class="featured house-${slug(first.house)}">
         <div class="featured-inner">
-          <div class="feature-side type-${slug(first.type)}">${typeLabel(first.type)}</div>
+          ${photoPanel(first.photo,first.type,true)}
           <div class="feature-body">
-            <div class="date">${formatDate(first.date)}</div>
-            <h1 class="headline">${clean(first.headline)}</h1>
-            <div class="announcement">${clean(first.announcement)}</div>
-            ${first.house?`<span class="house-tag">${clean(first.house)}</span>`:''}
+            <div class="date">${esc(formatDate(first.date))}</div>
+            <h1 class="headline">${esc(first.headline)}</h1>
+            <div class="announcement">${esc(first.announcement)}</div>
+            ${first.house?`<span class="house-tag">${esc(first.house)}</span>`:''}
           </div>
         </div>
       </article>`;
 
     list.innerHTML=rows.slice(1).map(item=>`
       <article class="news-card house-${slug(item.house)}">
-        <div class="news-side type-${slug(item.type)}">${typeLabel(item.type)}</div>
+        ${photoPanel(item.photo,item.type,false)}
         <div class="news-body">
-          <div class="date">${formatDate(item.date)}</div>
-          <h2>${clean(item.headline)}</h2>
-          <p>${clean(item.announcement)}</p>
-          ${item.house?`<span class="house-tag">${clean(item.house)}</span>`:''}
+          <div class="date">${esc(formatDate(item.date))}</div>
+          <h2>${esc(item.headline)}</h2>
+          <p>${esc(item.announcement)}</p>
+          ${item.house?`<span class="house-tag">${esc(item.house)}</span>`:''}
         </div>
       </article>`).join('');
   } catch(e) {
+    console.error(e);
     status.textContent='Knight News is temporarily unavailable.';
   }
 };
