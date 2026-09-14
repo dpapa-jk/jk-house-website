@@ -1,30 +1,143 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>News & Announcements | Joyce Kilmer House Program</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Knight News | Joyce Kilmer House Program</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f1e7;color:#0b2f29;font-family:Arial,Helvetica,sans-serif}
+.topbar{background:#034c3f;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:15px 28px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-weight:800}
+.badge{width:42px;height:42px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:21px}
+.nav{display:flex;gap:24px;flex-wrap:wrap;justify-content:flex-end}
+.nav a{color:#fff;text-decoration:none;font-weight:700;font-size:14px}
+.hero img{display:block;width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding:34px 24px 70px}
+.feed-status{text-align:center;padding:24px;font-weight:700;color:#5a6a65}
+.featured{border:5px solid #075143;border-radius:18px;background:#fff;overflow:hidden;margin-bottom:20px;box-shadow:0 8px 28px rgba(0,0,0,.12)}
+.featured-inner{display:grid;grid-template-columns:240px 1fr;min-height:280px}
+.feature-side{display:flex;align-items:center;justify-content:center;padding:24px;font-weight:900;font-size:28px;text-align:center;line-height:1.05}
+.feature-body{padding:28px 32px}
+.date{font-size:14px;font-weight:700;color:#315c54;margin-bottom:10px}
+.headline{font-size:clamp(30px,4vw,52px);line-height:.98;margin:0 0 14px;font-weight:900;color:#082f2a}
+.announcement{font-size:18px;line-height:1.45;color:#173c36;white-space:pre-wrap}
+.house-tag{display:inline-block;margin-top:18px;padding:8px 13px;border-radius:999px;font-weight:800;font-size:13px;background:#f1ead9;color:#123d36}
+.news-list{display:grid;gap:14px}
+.news-card{display:grid;grid-template-columns:165px 1fr;min-height:150px;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)}
+.news-side{display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;font-weight:900;font-size:20px;line-height:1.05}
+.news-body{padding:22px 26px}
+.news-card h2{margin:4px 0 8px;font-size:28px;line-height:1.05;color:#11264d}
+.news-card p{margin:0;color:#243d38;line-height:1.42;font-size:16px;white-space:pre-wrap}
+.footer{background:#034c3f;color:#fff;text-align:center;padding:28px 16px;font-size:14px;letter-spacing:1.7px;font-weight:700}
+.type-New-Challenge,.type-Upcoming-Event{background:#f4bf3a;color:#102e29}
+.type-Points-Update{background:#0f4a8a;color:white}
+.type-House-Spotlight{background:#5c187a;color:white}
+.type-Reminder{background:#0b5b4b;color:white}
+.type-Winner{background:#a70f16;color:white}
+.house-Ford-Avenue{border-left:7px solid #174f9b}
+.house-Violet-Terrace{border-left:7px solid #6d268f}
+.house-Highland-Drive{border-left:7px solid #e4ae14}
+.house-Albert-Avenue{border-left:7px solid #c82127}
+@media(max-width:760px){
+ .topbar{align-items:flex-start;flex-direction:column}
+ .nav{gap:12px}
+ .featured-inner{grid-template-columns:1fr}
+ .feature-side{min-height:100px}
+ .news-card{grid-template-columns:1fr}
+ .news-side{min-height:80px}
+}
+</style>
 </head>
-<body class="">
-
+<body>
 <header class="topbar">
-  <a class="brand" href="index.html"><span class="brand-badge">JK</span><span>Joyce Kilmer House Program</span></a>
+  <a class="brand" href="index.html"><span class="badge">JK</span><span>Joyce Kilmer House Program</span></a>
   <nav class="nav">
+    <a href="index.html">Home</a>
     <a href="house-cup.html">House Cup</a>
-    <a href="monday-house.html">Monday House</a>
+    <a href="monthly-matchup.html">Monthly Matchup</a>
     <a href="events.html">Events</a>
     <a href="student-hub.html">Student Hub</a>
-    <a href="staff-hub.html">Staff Hub</a>
     <a href="gallery.html">Gallery</a>
-    <a href="news.html">News</a>
+    <a href="news.html">Knight News</a>
   </nav>
 </header>
 
+<section class="hero"><img src="knight-news-hero.png" alt="Knight News — Four Houses. One Family."></section>
 
-<section class="page-hero"><div class="wrap"><div class="kicker">Joyce Kilmer House Program</div><h1>News & Announcements</h1><p class="subtitle">What’s happening in the JK House Program</p><a class="back" href="index.html">← Back to Home</a></div></section>
-<main><div class="list"><div class="list-item"><h3>This Week</h3><p>Post the most important current announcement.</p></div><div class="list-item"><h3>Recent Winners</h3><p>Celebrate House Cup, challenge, and activity winners.</p></div><div class="list-item"><h3>Coming Soon</h3><p>Preview upcoming events and deadlines.</p></div></div></main>
+<main class="wrap">
+  <div id="feedStatus" class="feed-status">Loading Knight News…</div>
+  <section id="featuredSlot"></section>
+  <section id="newsList" class="news-list"></section>
+</main>
 
+<footer class="footer">COOPERATION • ASSERTION • RESPONSIBILITY • EMPATHY • SELF-CONTROL</footer>
 
-<footer class="footer">RESPECT • EFFORT • INCLUSIVITY • KINDNESS • COMMUNITY</footer>
+<script>
+const SHEET_ID = '19gk6tt_gc8vAfCV7YRwt041thg90m3uq4MvDONIR34Q';
+const SHEET_NAME = 'Knight News';
+const callbackName = 'renderKnightNews';
 
-</body></html>
+function clean(v){ return (v ?? '').toString().trim(); }
+function slug(v){ return clean(v).replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+function typeLabel(type){ return clean(type).toUpperCase() || 'KNIGHT NEWS'; }
+function parseDate(v){ if (!v) return new Date(0); const d=new Date(v); return isNaN(d)?new Date(0):d; }
+function formatDate(v){ const d=parseDate(v); if(d.getTime()===0) return clean(v); return d.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}); }
+
+window[callbackName] = function(resp){
+  const status=document.getElementById('feedStatus');
+  const featuredSlot=document.getElementById('featuredSlot');
+  const list=document.getElementById('newsList');
+  try {
+    const rows=(resp.table.rows||[]).map(r=>{
+      const c=r.c||[];
+      return {
+        date:c[0]?.f||c[0]?.v||'',
+        headline:c[1]?.v||'',
+        announcement:c[2]?.v||'',
+        type:c[3]?.v||'',
+        house:c[4]?.v||''
+      };
+    }).filter(x=>clean(x.headline)||clean(x.announcement));
+
+    rows.sort((a,b)=>parseDate(b.date)-parseDate(a.date));
+
+    if(!rows.length){status.textContent='No Knight News has been posted yet.';return;}
+    status.style.display='none';
+    const first=rows[0];
+
+    featuredSlot.innerHTML=`
+      <article class="featured house-${slug(first.house)}">
+        <div class="featured-inner">
+          <div class="feature-side type-${slug(first.type)}">${typeLabel(first.type)}</div>
+          <div class="feature-body">
+            <div class="date">${formatDate(first.date)}</div>
+            <h1 class="headline">${clean(first.headline)}</h1>
+            <div class="announcement">${clean(first.announcement)}</div>
+            ${first.house?`<span class="house-tag">${clean(first.house)}</span>`:''}
+          </div>
+        </div>
+      </article>`;
+
+    list.innerHTML=rows.slice(1).map(item=>`
+      <article class="news-card house-${slug(item.house)}">
+        <div class="news-side type-${slug(item.type)}">${typeLabel(item.type)}</div>
+        <div class="news-body">
+          <div class="date">${formatDate(item.date)}</div>
+          <h2>${clean(item.headline)}</h2>
+          <p>${clean(item.announcement)}</p>
+          ${item.house?`<span class="house-tag">${clean(item.house)}</span>`:''}
+        </div>
+      </article>`).join('');
+  } catch(e) {
+    status.textContent='Knight News is temporarily unavailable.';
+  }
+};
+
+const script=document.createElement('script');
+script.src=`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${encodeURIComponent(SHEET_NAME)}&headers=1&tqx=responseHandler:${callbackName}&_=${Date.now()}`;
+script.onerror=()=>{document.getElementById('feedStatus').textContent='Knight News is temporarily unavailable.';};
+document.body.appendChild(script);
+</script>
+</body>
+</html>
