@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Monthly Matchup | Joyce Kilmer House Program</title>
+<style>
+:root{--green:#064f3f;--deep:#043d32;--gold:#c9a53c;--cream:#f6f0df;--ink:#10261f;--line:#dfd5ba}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7f3e8;color:var(--ink)}
+a{text-decoration:none;color:inherit}
+.topbar{background:linear-gradient(90deg,#075847,#034236);color:#fff;display:flex;align-items:center;gap:26px;padding:12px 30px;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px #0003}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:20px;line-height:1.1;margin-right:auto}.brandmark{width:44px;height:44px;border:2px solid #fff;border-radius:50%;display:grid;place-items:center;font-family:Georgia,serif;font-size:24px}
+.nav{display:flex;gap:24px;align-items:center;font-weight:700}.nav a{opacity:.95}.nav a.active{border-bottom:3px solid var(--gold);padding-bottom:7px}
+.hero{width:100%;background:#efe8d8}.hero img{display:block;width:100%;max-height:360px;object-fit:cover;object-position:center}
+main{max-width:1180px;margin:0 auto;padding:28px 24px 52px}
+.card{background:#fffdf8;border:1px solid #e5dcc8;border-radius:26px;overflow:hidden;box-shadow:0 10px 28px #2d443717}
+.section-title{background:linear-gradient(90deg,var(--green),#0a5b49);color:#fff;text-align:center;padding:22px 20px;font-family:Georgia,serif;font-weight:900;letter-spacing:1.5px;font-size:clamp(28px,4vw,48px);text-transform:uppercase}
+.match-title{margin:18px 20px 0;background:var(--cream);border-radius:18px;padding:16px;text-align:center;font-weight:900;font-size:clamp(20px,3vw,34px);text-transform:uppercase;letter-spacing:.5px}
+.deck-wrap{padding:18px 20px 24px}.deck-shell{background:#f3ead4;border:3px solid var(--green);border-radius:18px;padding:10px;overflow:hidden}.deck-shell iframe{display:block;width:100%;aspect-ratio:4/3;border:0;border-radius:10px;background:#fff}
+.note{text-align:center;font-size:14px;color:#506158;margin-top:10px}
+.how{margin-top:22px;background:#f3ead5;border-radius:24px;padding:28px 24px 24px;border:1px solid #e3d8bc}.how h2{text-align:center;color:var(--green);font-family:Georgia,serif;font-size:38px;margin:0 0 24px;text-transform:uppercase}.steps{display:grid;grid-template-columns:repeat(4,1fr)}.step{text-align:center;padding:0 22px;border-right:1px solid #cfc2a3}.step:last-child{border-right:0}.num{width:48px;height:48px;border-radius:50%;background:var(--green);color:#fff;font-weight:900;display:grid;place-items:center;margin:0 auto 12px;font-size:20px}.step h3{color:var(--green);font-size:23px;text-transform:uppercase;margin:0 0 9px}.step p{font-size:16px;line-height:1.45;margin:0}
+footer{background:linear-gradient(90deg,#075847,#034236);color:#fff;text-align:center;padding:28px 20px;font-weight:900;letter-spacing:5px;font-size:18px;border-top:4px solid var(--gold)}
+@media(max-width:850px){.nav{display:none}.topbar{padding:10px 16px}.steps{grid-template-columns:1fr 1fr;gap:24px}.step{border-right:0}.hero img{max-height:270px}.deck-wrap{padding:12px}.match-title{margin:14px 12px 0}}
+@media(max-width:520px){.brand{font-size:16px}.brandmark{width:38px;height:38px;font-size:20px}.steps{grid-template-columns:1fr}.how h2{font-size:30px}.section-title{font-size:30px}main{padding:18px 12px 34px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="brandmark">JK</div><div>Joyce Kilmer<br>House Program</div></div>
+  <nav class="nav">
+    <a href="index.html">Home</a>
+    <a href="house-cup.html">House Cup</a>
+    <a class="active" href="monthly-matchup.html">Monthly Matchup</a>
+    <a href="events.html">Events</a>
+    <a href="student-hub.html">Student Hub</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="news.html">Knight News</a>
+  </nav>
+</header>
+<section class="hero"><img src="monthly-matchup-hero.png" alt="Monthly Matchup - Vote. Debate. Defend."></section>
+<main>
+  <section class="card">
+    <div class="section-title" id="monthHeading">September Matchup</div>
+    <div class="match-title" id="matchTitle">Ultimate Ice Cream Showdown</div>
+    <div class="deck-wrap">
+      <div class="deck-shell">
+        <iframe
+          src="https://docs.google.com/presentation/d/1nIH22WWVdj69B9llwCnY3zh8hBsLetWLg9HYcyeZAU4/embed?start=false&loop=false&delayms=60000&rm=minimal"
+          allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
+          title="Current Monthly Matchup"></iframe>
+      </div>
+      <div class="note">Only the current month's matchup is displayed here.</div>
+    </div>
+  </section>
+
+  <section class="how">
+    <h2>How It Works</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>View</h3><p>Check out this month's bracket and get familiar with the matchups.</p></div>
+      <div class="step"><div class="num">2</div><h3>Vote</h3><p>Cast your vote during your class period.</p></div>
+      <div class="step"><div class="num">3</div><h3>Debate</h3><p>Make your case! Why does your choice deserve to move on?</p></div>
+      <div class="step"><div class="num">4</div><h3>Defend</h3><p>Support your favorites and show your house pride!</p></div>
+    </div>
+  </section>
+</main>
+<footer>FOUR HOUSES. ONE FAMILY.</footer>
+
+<script>
+(function(){
+  var cb='mmFeed'+Date.now();
+  window[cb]=function(resp){
+    try{
+      var rows=resp.table&&resp.table.rows||[];
+      if(rows.length){
+        var c=rows[0].c||[];
+        var month=c[0]&&c[0].v ? String(c[0].v) : '';
+        var title=c[1]&&c[1].v ? String(c[1].v) : '';
+        if(month) document.getElementById('monthHeading').textContent=month.toUpperCase()+' MATCHUP';
+        if(title) document.getElementById('matchTitle').textContent=title;
+      }
+    }catch(e){}
+    try{delete window[cb]}catch(e){}
+  };
+  var s=document.createElement('script');
+  s.src='https://docs.google.com/spreadsheets/d/1jF9_32VJ_GF5k-ZGYM2Vjdhy0yj-LZlSM_Q8ZuNARis/gviz/tq?sheet=Current%20Matchup&headers=1&tqx=responseHandler:'+cb+'&_='+(Date.now());
+  document.body.appendChild(s);
+})();
+</script>
+</body>
+</html>
