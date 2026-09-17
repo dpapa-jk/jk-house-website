@@ -1,50 +1,40 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Albert Avenue House | Joyce Kilmer</title>
-<style>
-html,body{margin:0;background:#111;font-family:Arial,sans-serif}
-.page{position:relative;width:min(100%,1024px);margin:auto;background:#faf7f0}
-.base{display:block;width:100%;height:auto}
-.nav a{position:absolute;top:5.2%;height:3.2%;z-index:8}
-.nav .home{left:3%;width:8%}.nav .cup{left:12%;width:11%}.nav .match{left:24%;width:18%}.nav .events{left:43%;width:10%}.nav .hub{left:54%;width:14%}.nav .gallery{left:69%;width:11%}.nav .news{left:81%;width:14%}
-.photo{position:absolute;left:3.05%;top:34.0%;width:31.7%;height:18.5%;object-fit:cover;object-position:center;z-index:4}
-.live{position:absolute;z-index:7}
-.points{left:39.2%;top:36.4%;width:21.8%;text-align:center;color:#fff;font-weight:900;font-size:clamp(25px,6.3vw,66px)}
-.rank{left:39.2%;top:46.2%;width:21.8%;text-align:center;color:#111;font-weight:900;font-size:clamp(24px,5.5vw,58px)}
-.about{left:66.1%;top:35.1%;width:28.8%;height:14.5%;background:#fbf8f1;padding:1.2%;font-size:clamp(9px,1.45vw,17px);line-height:1.38;overflow:auto}
-.shouts{left:45.6%;top:64.6%;width:49.2%;height:17.2%;background:#fbf8f1;padding:.5%;overflow:hidden}
-.shout{background:#fff;border-radius:8px;padding:1.3% 2%;margin:1.3% 0;font-size:clamp(8px,1.2vw,14px);line-height:1.25;box-shadow:0 1px 4px #0002}
-.shout b{display:block}.pager{text-align:center;font-size:11px}.pager button{border:0;background:#111;color:#fff;padding:4px 8px;border-radius:4px;margin:0 4px}
-@media(max-width:600px){.about{font-size:8px}.shout{font-size:7px}.pager{font-size:8px}}
-</style></head>
-<body><div class="page">
-<img class="base" src="albert-approved-design.png" alt="Albert Avenue House">
-<div class="nav">
-<a class="home" href="index.html" aria-label="Home"></a><a class="cup" href="house-cup.html" aria-label="House Cup"></a>
-<a class="match" href="monthly-matchup.html" aria-label="Monthly Matchup"></a><a class="events" href="events.html" aria-label="Events"></a>
-<a class="hub" href="student-hub.html" aria-label="Student Hub"></a><a class="gallery" href="gallery.html" aria-label="Gallery"></a>
-<a class="news" href="news.html" aria-label="Knight News"></a>
-</div>
-<!-- Exact original uploaded photograph overlays the mockup's leader-photo area. -->
-<img class="photo" src="mrs-manise.jpeg" alt="Mrs. Manise">
-<div id="points" class="live points">—</div><div id="rank" class="live rank">—</div>
-<div id="about" class="live about">Loading live Albert Avenue description…</div>
-<div class="live shouts"><div id="shoutbox">Loading live Albert Avenue shout-outs…</div><div class="pager"><button id="prev">Previous</button><span id="pg"></span><button id="next">Next</button></div></div>
-</div>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Albert Avenue House | Joyce Kilmer</title><style>
+:root{--r:#d71920;--k:#0b0b0b;--paper:#fbf8f0}*{box-sizing:border-box}body{margin:0;background:#eee8dc;color:#111;font-family:Arial,sans-serif}
+header{height:62px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 5%;font-weight:900;font-size:22px}.script{font:italic 700 26px Georgia}
+nav{background:#050505;text-align:center;padding:14px}nav a{color:#fff;text-decoration:none;font-weight:800;margin:0 24px}
+.hero{background:#111}.hero img{display:block;width:100%;max-height:315px;object-fit:cover;object-position:center bottom}
+main{max-width:1180px;margin:auto;padding:20px}.top{display:grid;grid-template-columns:1fr .9fr 1.15fr;gap:18px}.bottom{display:grid;grid-template-columns:.78fr 1.4fr;gap:18px;margin-top:18px}
+.card{background:var(--paper);border:1px solid #c9bba8;border-radius:7px;padding:15px;box-shadow:0 2px 7px #0001}.hd{background:var(--r);color:#fff;text-align:center;font-size:25px;font-weight:900;padding:9px;margin:-5px -5px 13px}.black{background:#111}
+.leader img{width:100%;aspect-ratio:1.25/1;object-fit:cover;object-position:center 38%;display:block}.leaderName{background:var(--r);color:#fff;text-align:center;font-size:27px;font-weight:900;padding:7px}.leadway{text-align:center;font:italic 700 26px Georgia;margin-top:8px}
+.points{text-align:center}.score{background:linear-gradient(#e51c24,#bd1118);color:#fff;border-radius:7px;padding:18px;font-size:64px;font-weight:900}.score small{display:block;font-size:20px}.ranklabel{display:inline-block;background:#111;color:#fff;padding:5px 18px;margin-top:13px;font-weight:900}.rank{font-size:58px;font-weight:900;margin:6px}
+.about{font-size:18px;line-height:1.45}.motto{font:italic 700 27px Georgia;margin-top:20px}
+.advisors ul{list-style:none;padding:0 18px;margin:0}.advisors li{font-size:18px;font-weight:800;padding:5px 0}.advisors li:before{content:"♟";margin-right:12px}.same{text-align:center;font:italic 700 23px Georgia;margin-top:10px}
+.shout{background:#fff;border:1px solid #ddd;border-radius:8px;padding:11px 14px;margin:9px 0;box-shadow:0 1px 4px #0001;font-size:15px;line-height:1.3}.shout b{display:block}.pager{text-align:center}.pager button{border:0;background:#111;color:#fff;border-radius:4px;padding:6px 10px;margin:0 5px}
+footer{background:var(--r);color:#fff;text-align:center;padding:26px;font-size:32px;font-weight:900;margin-top:15px}footer small{display:block;font-size:13px;letter-spacing:2px;margin-top:9px}
+@media(max-width:800px){header{font-size:16px}.script{font-size:17px}nav a{display:inline-block;margin:6px 9px}.top,.bottom{grid-template-columns:1fr}.hero img{min-height:210px;object-fit:cover}}
+</style></head><body>
+<header><div>JK &nbsp; JOYCE KILMER MIDDLE SCHOOL</div><div class="script">Four Houses. One Family.</div></header>
+<nav><a href="index.html">Home</a><a href="house-cup.html">House Cup</a><a href="monthly-matchup.html">Monthly Matchup</a><a href="events.html">Events</a><a href="student-hub.html">Student Hub</a><a href="gallery.html">Gallery</a><a href="news.html">Knight News</a></nav>
+<div class="hero"><img src="albert-banner-red.png" alt="Albert Avenue — Your Pace. Your Path."></div>
+<main><div class="top">
+<section class="card leader"><div class="hd">HOUSE LEADER</div><img src="mrs-manise.jpeg" alt="Mrs. Manise"><div class="leaderName">Mrs. Manise</div><div class="leadway">Lead the Way ♡</div></section>
+<section class="card points"><div class="hd black">HOUSE POINTS</div><div class="score"><span id="pts">—</span><small>POINTS</small></div><div class="ranklabel">CURRENT RANK</div><div id="rank" class="rank">—</div></section>
+<section class="card about"><div class="hd">ABOUT OUR HOUSE</div><div id="about">Loading live Albert Avenue description…</div><div class="motto">Your Pace. Your Path.</div></section>
+</div><div class="bottom">
+<section class="card advisors"><div class="hd">HOUSE ADVISORS</div><ul><li>Mrs. Dennis</li><li>Mrs. Dysart</li><li>Ms. Gadelkareem</li><li>Mr. Pinella</li><li>Mr. Wrate</li><li>Ms. Eichert</li><li>Ms. Montoya</li></ul><div class="same">Same House. Brighter Futures.</div></section>
+<section class="card"><div class="hd">ALBERT AVENUE SHOUT-OUTS</div><div id="shouts">Loading live Albert Avenue shout-outs…</div><div class="pager"><button id="prev">Previous</button><span id="pg"></span><button id="next">Next</button></div></section>
+</div></main><footer>FOUR HOUSES. ONE FAMILY.<small>COOPERATION | ASSERTION | RESPONSIBILITY | EMPATHY | SELF-CONTROL</small></footer>
 <script>
-const H=['Ford Avenue','Violet Terrace','Albert Avenue','Highland Drive'];
-function v(c){return c&&c.v!=null?c.v:''}
-function load(u){let s=document.createElement('script');s.src=u+(u.includes('?')?'&':'?')+'_='+Date.now();document.body.appendChild(s)}
-window.albertPoints=function(r){let t={};r.table.rows.forEach(x=>{let a=x.c.map(v),n=String(a[0]).trim();if(H.includes(n))t[n]=Number(a[1])||0});points.textContent=t['Albert Avenue']??'—';let q=H.slice().sort((a,b)=>(t[b]??-1)-(t[a]??-1)),p=q.indexOf('Albert Avenue')+1;rank.textContent=p? p+({1:'ST',2:'ND',3:'RD'}[p]||'TH'):'—'}
-window.albertAbout=function(r){let f='';r.table.rows.forEach(x=>{let a=x.c.map(v);if(String(a[0]).trim()==='Albert Avenue')f=a[1]||''});about.textContent=f||'About Our House content will appear here when it is added to the live House About sheet.'}
-let S=[],P=0;
-function esc(x){return String(x||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
-function draw(){shoutbox.innerHTML='';let slice=S.slice(P*3,P*3+3);if(!slice.length)shoutbox.textContent='No Albert Avenue shout-outs have been posted yet.';slice.forEach(x=>{let d=document.createElement('div');d.className='shout';d.innerHTML='<b>'+esc(x.n)+(x.g?' • Grade '+esc(x.g):'')+'</b>'+esc(x.s)+(x.by?'<br><small>Submitted by '+esc(x.by)+'</small>':'');shoutbox.appendChild(d)});let pages=Math.max(1,Math.ceil(S.length/3));pg.textContent=pages>1?' '+(P+1)+' of '+pages+' ':'';prev.style.visibility=P?'visible':'hidden';next.style.visibility=P<pages-1?'visible':'hidden'}
-window.albertShouts=function(r){let c=r.table.cols.map(x=>(x.label||'').toLowerCase()),i=n=>c.indexOf(n);S=r.table.rows.map(x=>x.c.map(v)).filter(a=>String(a[i('house')]).trim()==='Albert Avenue').map(a=>({n:a[i('student name')],g:a[i('grade')],s:a[i('shout-out')],by:a[i('submitted by')]})).reverse();draw()}
-prev.onclick=()=>{if(P){P--;draw()}};next.onclick=()=>{if((P+1)*3<S.length){P++;draw()}}
-load('https://docs.google.com/spreadsheets/d/1Jquf820HH6y39T5j-bfb3g761HAaZA2CQKBMGXqSDos/gviz/tq?sheet=Sheet1&tqx=responseHandler:albertPoints');
-load('https://docs.google.com/spreadsheets/d/1zVuk5ETAVylUWVk5O6aW0_loKz_GoIWs5V8dNTunH0M/gviz/tq?sheet=House%20About&headers=1&tqx=responseHandler:albertAbout');
-load('https://docs.google.com/spreadsheets/d/e/2PACX-1vRi8dFpeOjCBCan6mUjOkdY4BFj_b-kn7nMlp-uV4ICBwQhkhOiNy2EJ2YW_8ZQ_qqPLSkHFmiDfUv/gviz/tq?gid=1496082196&tqx=responseHandler:albertShouts');
+function val(c){return c&&c.v!=null?c.v:''} function js(u){let s=document.createElement('script');s.src=u+(u.includes('?')?'&':'?')+'_='+Date.now();document.body.appendChild(s)}
+const houses=['Ford Avenue','Violet Terrace','Albert Avenue','Highland Drive'];
+window.ap=function(r){let t={};r.table.rows.forEach(x=>{let a=x.c.map(val),n=String(a[0]).trim();if(houses.includes(n))t[n]=Number(a[1])||0});document.getElementById('pts').textContent=t['Albert Avenue']??'—';let q=houses.slice().sort((a,b)=>(t[b]??-1)-(t[a]??-1)),p=q.indexOf('Albert Avenue')+1;document.getElementById('rank').textContent=p?p+({1:'ST',2:'ND',3:'RD'}[p]||'TH'):'—'}
+window.aa=function(r){let f='';r.table.rows.forEach(x=>{let a=x.c.map(val);if(String(a[0]).trim()==='Albert Avenue')f=a[1]||''});document.getElementById('about').textContent=f||'About Our House content will appear here when it is added to the live House About sheet.'}
+let A=[],P=0;function esc(x){return String(x||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+function draw(){let b=document.getElementById('shouts');b.innerHTML='';let a=A.slice(P*3,P*3+3);if(!a.length)b.textContent='No Albert Avenue shout-outs have been posted yet.';a.forEach(x=>{let d=document.createElement('div');d.className='shout';d.innerHTML='<b>'+esc(x.n)+(x.g?' • Grade '+esc(x.g):'')+'</b>'+esc(x.s)+(x.by?'<br><small>Submitted by '+esc(x.by)+'</small>':'');b.appendChild(d)});let n=Math.max(1,Math.ceil(A.length/3));document.getElementById('pg').textContent=n>1?' '+(P+1)+' of '+n+' ':'';prev.style.visibility=P?'visible':'hidden';next.style.visibility=P<n-1?'visible':'hidden'}
+window.aso=function(r){let cols=r.table.cols.map(c=>(c.label||'').toLowerCase()),i=n=>cols.indexOf(n);A=r.table.rows.map(x=>x.c.map(val)).filter(a=>String(a[i('house')]).trim()==='Albert Avenue').map(a=>({n:a[i('student name')],g:a[i('grade')],s:a[i('shout-out')],by:a[i('submitted by')]})).reverse();draw()}
+prev.onclick=()=>{if(P){P--;draw()}};next.onclick=()=>{if((P+1)*3<A.length){P++;draw()}}
+js('https://docs.google.com/spreadsheets/d/1Jquf820HH6y39T5j-bfb3g761HAaZA2CQKBMGXqSDos/gviz/tq?sheet=Sheet1&tqx=responseHandler:ap');
+js('https://docs.google.com/spreadsheets/d/1zVuk5ETAVylUWVk5O6aW0_loKz_GoIWs5V8dNTunH0M/gviz/tq?sheet=House%20About&headers=1&tqx=responseHandler:aa');
+js('https://docs.google.com/spreadsheets/d/e/2PACX-1vRi8dFpeOjCBCan6mUjOkdY4BFj_b-kn7nMlp-uV4ICBwQhkhOiNy2EJ2YW_8ZQ_qqPLSkHFmiDfUv/gviz/tq?gid=1496082196&tqx=responseHandler:aso');
 </script></body></html>
