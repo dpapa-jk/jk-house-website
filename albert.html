@@ -45,8 +45,8 @@ footer{background:var(--d);color:#fff;text-align:center;padding:25px;font-size:2
 <script>
 function cell(c){return c&&c.v!=null?c.v:''}
 function feed(url){let s=document.createElement('script');s.src=url+(url.includes('?')?'&':'?')+'_='+Date.now();document.body.appendChild(s)}
-const HOUSES=['Ford Avenue','Albert Avenue','Albert Avenue','Highland Drive'];
-const COLORS={'Ford Avenue':'#1262ad','Albert Avenue':'#7428a8','Albert Avenue':'#df171f','Highland Drive':'#e3b500'};
+const HOUSES=['Ford Avenue','Violet Terrace','Albert Avenue','Highland Drive'];
+const COLORS={'Ford Avenue':'#1262ad','Violet Terrace':'#7428a8','Albert Avenue':'#df171f','Highland Drive':'#e3b500'};
 function ordinal(n){return n+({1:'st',2:'nd',3:'rd'}[n]||'th')}
 function renderStandings(totals, target, featured){
  let sorted=HOUSES.slice().sort((a,b)=>(totals[b]??-1)-(totals[a]??-1));

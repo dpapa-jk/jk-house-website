@@ -1,10 +1,210 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ford Avenue House</title><style>
-:root{--b:#0863b1;--d:#003b70;--g:#ffc51b}*{box-sizing:border-box}body{margin:0;background:#f4f7f9;font-family:Arial;color:#07365f}.nav{background:#073f35;display:flex;justify-content:center;gap:38px;padding:15px;flex-wrap:wrap}.nav a{color:#fff;text-decoration:none;font-weight:900}.hero{background:linear-gradient(120deg,#003d79,#0875d1,#00386d);color:#fff;text-align:center;padding:30px;border-bottom:6px solid var(--g)}.hero h1{font-size:55px;margin:2px;font-weight:1000;text-shadow:3px 3px #002a50}.motto{display:inline-block;border:4px solid var(--g);padding:7px 38px;font-size:26px;font-weight:1000}.hero p{font-weight:900;letter-spacing:4px}main{max-width:1360px;margin:auto;padding:18px}.grid{display:grid;grid-template-columns:.8fr 1fr 1.5fr;gap:16px}.card{background:#fff;border:1px solid #c9d8e7;border-radius:8px;overflow:hidden;min-height:405px}.hd{background:linear-gradient(90deg,#003e78,#0b67b6);color:#fff;padding:11px 15px;font-size:22px;font-weight:1000;border-bottom:4px solid var(--g)}.leader{text-align:center;padding:16px}.portrait{height:205px;background:#e8f4ff;display:grid;place-items:center;font-size:25px;font-weight:900;border:5px solid var(--g);margin:auto;max-width:210px}.name{background:var(--b);color:#fff;font-size:23px;font-weight:900;padding:6px;max-width:230px;margin:auto}.teachers{border-top:2px solid var(--g);margin-top:14px;padding-top:12px;font-weight:800;line-height:1.7}.about{padding:18px;font-size:17px;line-height:1.45}.traits{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;border-top:3px solid var(--g);padding-top:15px;margin-top:15px}.trait{text-align:center;font-size:10px;font-weight:900}.trait i{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;margin:auto auto 7px;background:var(--b);color:#fff;font-size:21px;font-style:normal}.built{background:#d9edff;text-align:center;padding:13px;margin-top:17px;font-size:25px;font-weight:1000}.shoutbody{padding:18px}.shout{display:flex;gap:12px;background:#e8f4ff;border-left:7px solid var(--b);padding:14px;margin:10px 0;border-radius:7px}.shout b{display:block}.pager{text-align:center}.pager button{background:var(--b);color:#fff;border:0;border-radius:4px;padding:7px 12px;margin:5px}.stand{margin-top:17px;background:#fff;border:1px solid #c9d8e7;border-radius:8px;padding:10px}.stitle{background:#003b70;color:#fff;border-bottom:4px solid var(--g);padding:10px 16px;font-size:23px;font-weight:1000}.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.tile{min-height:80px;border:3px solid var(--c);border-radius:8px;display:flex;align-items:center;background:#fff;overflow:hidden}.tile.me{background:var(--c);color:#fff}.place{font-size:31px;font-weight:1000;padding:14px;color:var(--c)}.me .place{color:#fff}.h{font-weight:900}.h small{display:block;margin-top:5px}footer{background:#073f35;color:#fff;text-align:center;padding:22px;font-weight:900;letter-spacing:2px}@media(max-width:800px){.nav{gap:15px}.nav a{font-size:12px}.hero h1{font-size:35px}.grid{grid-template-columns:1fr}.card{min-height:0}.sgrid{grid-template-columns:1fr 1fr}}</style></head><body>
-<nav class="nav"><a href="index.html">Home</a><a href="house-cup.html">House Cup</a><a href="monthly-matchup.html">Monthly Matchup</a><a href="events.html">Events</a><a href="student-hub.html">Student Hub</a><a href="gallery.html">Gallery</a><a href="news.html">Knight News</a></nav><div class="hero"><div>WELCOME TO</div><h1>FORD AVENUE</h1><div class="motto">BUILT TOUGH</div><p>FOUR HOUSES. ONE FAMILY.</p></div><main><div class="grid">
-<section class="card"><div class="hd">♟ HOUSE LEADER</div><div class="leader"><div class="portrait">Mrs. Nehila</div><div class="name">Mrs. Nehila</div><div class="teachers"><b>HOUSE ADVISORY TEACHERS</b><br>Mrs. Papa • Ms. Weinstein<br>Ms. Harrs • Ms. O’Brien<br>Ms. Fratianni • Ms. Arias</div></div></section>
-<section class="card"><div class="hd">▣ ABOUT OUR HOUSE</div><div class="about"><div id="about">Ford Avenue is made up of students who show strength, determination, and a commitment to doing what’s right. We support each other, work hard, and face challenges with a positive attitude. At Ford Avenue, we are always stronger together.</div><div class="traits"><div class="trait"><i>▲</i>STRENGTH</div><div class="trait"><i>◎</i>DETERMINATION</div><div class="trait"><i>●</i>TEAMWORK</div><div class="trait"><i>♥</i>KINDNESS</div></div><div class="built">BUILT TOUGH.</div></div></section>
-<section class="card"><div class="hd">★ STUDENT SHOUT-OUTS</div><div class="shoutbody"><div id="shouts">Loading live Ford Avenue shout-outs…</div><div class="pager"><button id="prev">Previous</button><span id="pg"></span><button id="next">Next</button></div></div></section></div>
-<div class="stand"><div class="stitle">🏆 HOUSE CUP — CURRENT STANDINGS • LIVE</div><div id="sg" class="sgrid"><div class="tile" style="--c:#1262ad"><div class="place">—</div><div class="h">Ford Avenue<small>Loading…</small></div></div><div class="tile" style="--c:#7428a8"><div class="place">—</div><div class="h">Violet Terrace<small>Loading…</small></div></div><div class="tile" style="--c:#df171f"><div class="place">—</div><div class="h">Albert Avenue<small>Loading…</small></div></div><div class="tile" style="--c:#e3b500"><div class="place">—</div><div class="h">Highland Drive<small>Loading…</small></div></div></div></div></main><footer>COOPERATION | ASSERTION | RESPONSIBILITY | EMPATHY | SELF-CONTROL</footer>
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ford Avenue | Joyce Kilmer House Program</title>
+<style>
+html,body{margin:0;background:#eef3f7;font-family:Arial,sans-serif;color:#082d5c}
+.stage{position:relative;width:min(100vw,1536px);aspect-ratio:1536/1024;margin:auto;background:url('ford-approved-background.png') 0 0/100% 100% no-repeat;overflow:hidden}
+.overlay{position:absolute;background:#fff}
+#leader{left:2.08%;top:39.65%;width:20.96%;height:41.11%;text-align:center}
+#leader img{width:54%;height:47%;object-fit:cover;object-position:center 15%;margin-top:2.4%;border:4px solid #f4c21d}
+.name{display:table;margin:-1.5% auto 0;background:#0757a5;color:#fff;padding:.8% 14%;font-weight:900;font-size:clamp(10px,1.55vw,24px)}
+.role{display:table;margin:auto;background:#f4c21d;padding:.5% 12%;font-size:clamp(7px,.72vw,11px);font-weight:900;letter-spacing:.08em}
+.teachers{border-top:2px solid #f4c21d;margin:3% 6% 0;padding-top:2.6%;line-height:1.7;font-size:clamp(8px,.98vw,15px)} .teachers b{display:block}
+#about{left:24.35%;top:39.65%;width:24.93%;height:41.11%;padding:1.4% 2.25%;box-sizing:border-box;font-size:clamp(9px,1.05vw,16px);line-height:1.45}
+.aboutline{border-top:3px solid #f4c21d;margin-top:5%;padding-top:4%}
+.motto{margin-top:3%;height:41%;background:url("ford-built-tough.png") center/contain no-repeat;}
+#shouts{left:50.65%;top:39.65%;width:23.18%;height:41.11%;padding:.8% .9%;box-sizing:border-box}
+.shout{display:grid;grid-template-columns:23% 1fr;background:#e8f3fc;border-radius:7px;overflow:hidden}.star{background:#d6eafd;display:flex;align-items:center;justify-content:center;color:#0757a5;font-size:clamp(14px,1.7vw,26px)}.shouttxt{padding:4%}.shouttxt b{color:#0757a5;font-size:clamp(8px,.9vw,14px)}.shouttxt small{display:block;margin-top:3%;font-size:clamp(7px,.78vw,12px)}
+.shoutnote{text-align:center;margin-top:5%;color:#58708c;font-size:clamp(7px,.8vw,13px)}.shout + .shout{margin-top:2.5%}.shoutnav{position:absolute;left:8%;right:8%;bottom:8%;display:flex;justify-content:center;gap:3%}.shoutnav button{background:#0757a5;color:#fff;border:0;border-radius:5px;padding:2.5% 5%;font-size:clamp(7px,.76vw,12px);font-weight:900}.shoutnav button:disabled{opacity:.35}.viewbtn{position:absolute;left:14%;right:14%;bottom:9%;background:#0757a5;color:#fff;text-align:center;padding:3%;font-size:clamp(7px,.82vw,13px);font-weight:900;border-radius:6px}
+#events{left:75.2%;top:39.65%;width:22.72%;height:41.11%;padding:2.3% 2.5%;box-sizing:border-box;text-align:center}.coming{color:#0757a5;font-size:clamp(12px,1.4vw,22px);font-weight:900}.eventnote{color:#58708c;font-size:clamp(7px,.8vw,13px);line-height:1.45}
+.points{position:absolute;left:3.5%;right:3.5%;bottom:2.5%;height:34%;background:#edf6fd;border:1px solid #c6ddeb;border-radius:8px;display:grid;grid-template-columns:38% 1fr;overflow:hidden}.pointsL{background:#d9ecfa;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:clamp(10px,1.3vw,20px);line-height:1.25}.pointsR{display:flex;flex-direction:column;align-items:center;justify-content:center}.pts{font-size:clamp(20px,3.2vw,50px);font-weight:900}.plac{background:#0757a5;color:#fff;padding:2% 16%;font-weight:900;border-radius:4px;font-size:clamp(10px,1.25vw,20px)}
+#ranks{position:absolute;left:19.8%;top:83.1%;width:77.5%;height:7.65%;display:grid;grid-template-columns:1.02fr 1fr 1.1fr 1.45fr;gap:.55%;align-items:center}.rank{height:90%;border:1px solid #73a5d5;border-radius:6px;color:#fff;display:flex;align-items:center;padding:0 7%;box-sizing:border-box;gap:6%;font-size:clamp(7px,.8vw,13px)}.rank strong{font-size:clamp(14px,1.9vw,29px)}.rank.ford{background:#f4c21d;color:#082d5c;border:none;clip-path:polygon(5% 0,100% 0,94% 100%,0 100%)}.rank .rtext{line-height:1.35}
+
+.topnav{position:absolute;left:27%;right:1%;top:0;height:6.1%;z-index:40;background:#06483f;display:flex;align-items:center;justify-content:center;gap:3%;padding:0 1%;box-sizing:border-box}.topnav a{color:#fff;text-decoration:none;font-weight:900;font-size:clamp(7px,.78vw,12px);white-space:nowrap}.navhot{display:none}
+.nav-home{left:34.0%;width:5.8%}
+.nav-houses{left:40.0%;width:8.2%}
+.nav-cup{left:48.7%;width:7.2%}
+.nav-monday{left:56.3%;width:9.2%}
+.nav-events{left:66.0%;width:6.3%}
+.nav-student{left:72.8%;width:8.4%}
+.nav-staff{left:81.6%;width:7.4%}
+.nav-gallery{left:89.4%;width:7.7%}
+
+#standingsMask{
+  position:absolute;left:1.55%;top:81.75%;width:96.9%;height:9.0%;
+  background:#062f61;border-radius:9px;z-index:12;
+  box-sizing:border-box;border:1px solid #0b4b8d;
+  display:grid;grid-template-columns:18.5% 1fr;align-items:center;
+  padding:.7% .8%;
+}
+.cupLabel{color:#fff;display:flex;align-items:center;gap:7%;font-weight:900}
+.cupTrophy{font-size:clamp(18px,2.4vw,36px);color:#f4c21d}
+.cupTitle{font-size:clamp(12px,1.4vw,22px);line-height:1.05}
+.cupSub{font-size:clamp(6px,.65vw,10px);letter-spacing:.08em;margin-top:4%}
+#liveRanks{display:grid;grid-template-columns:repeat(4,1fr);gap:.7%;height:82%}
+.liveRank{border:1px solid #78a8d8;border-radius:7px;color:#fff;display:flex;align-items:center;gap:7%;padding:0 6%;box-sizing:border-box;overflow:hidden}
+.liveRank.first{background:#f4c21d;color:#082d5c;border:none}
+.liveRank .place{font-weight:1000;font-size:clamp(14px,2vw,30px);white-space:nowrap}
+.liveRank .house{font-size:clamp(7px,.82vw,13px);line-height:1.12}
+.liveRank .house b{display:block;margin-top:2%}
+.footer-est-mask{position:absolute;right:0;bottom:0;width:13%;height:7.7%;background:#06483f;z-index:11}
+
+</style></head><body>
+<div class="stage"><nav class="topnav"><a href="index.html">Home</a><a href="house-cup.html">House Cup</a><a href="monthly-matchup.html">Monthly Matchup</a><a href="events.html">Events</a><a href="student-hub.html">Student Hub</a><a href="gallery.html">Gallery</a><a href="news.html">Knight News</a></nav>
+<div id="leader" class="overlay"><img src="mrs-nehila.jpeg" alt="Mrs. Nehila"><div class="name">Mrs. Nehila</div><div class="role">HOUSE LEADER</div><div class="teachers"><b>HOUSE ADVISORY TEACHERS</b>Mrs. Papa &nbsp; • &nbsp; Ms. Weinstein<br>Ms. Harrs &nbsp; • &nbsp; Ms. O’Brien<br>Ms. Fratianni &nbsp; • &nbsp; Ms. Arias</div></div>
+<div id="about" class="overlay">Ford Avenue is made up of students who show strength, determination, and a commitment to doing what’s right. We support each other, work hard, and face challenges with a positive attitude. At Ford Avenue, we are always stronger together.<div class="aboutline"></div><div class="motto" aria-label="Built Tough"></div></div>
+<div id="shouts" class="overlay">
+  <div id="shoutList"><div class="shoutnote">Loading live Ford Avenue shout-outs…</div></div>
+  <div class="shoutnav">
+    <button id="prevShout" type="button">‹ PREVIOUS</button>
+    <button id="nextShout" type="button">NEXT ›</button>
+  </div>
+</div>
+<div id="events" class="overlay"><div class="points" style="left:3.5%;right:3.5%;top:8%;bottom:auto;height:84%"><div class="pointsL">🏆<br>HOUSE<br>POINTS</div><div class="pointsR"><div class="pts" id="fordPts">11</div><small>TOTAL HOUSE POINTS</small><div class="plac" id="fordPlace">1st PLACE</div></div></div></div>
+
+
+<a class="navhot nav-home" href="index.html" aria-label="Home"></a>
+<a class="navhot nav-houses" href="index.html#houses" aria-label="Our Houses"></a>
+<a class="navhot nav-cup" href="house-cup.html" aria-label="House Cup"></a>
+<a class="navhot nav-monday" href="monday-house.html" aria-label="Monday House"></a>
+<a class="navhot nav-events" href="events.html" aria-label="Events"></a>
+<a class="navhot nav-student" href="student-hub.html" aria-label="Student Hub"></a>
+<a class="navhot nav-staff" href="staff-hub.html" aria-label="Staff Hub"></a>
+<a class="navhot nav-gallery" href="gallery.html" aria-label="Gallery"></a>
+
+<div id="standingsMask">
+  <div class="cupLabel">
+    <div class="cupTrophy">🏆</div>
+    <div><div class="cupTitle">HOUSE CUP</div><div class="cupSub">CURRENT STANDINGS • LIVE</div></div>
+  </div>
+  <div id="liveRanks"></div>
+</div>
+<div class="footer-est-mask"></div>
+
+</div>
+
 <script>
-function v(c){return c&&c.v!=null?c.v:''}function L(u){let s=document.createElement('script');s.src=u+(u.includes('?')?'&':'?')+'_='+Date.now();document.body.appendChild(s)}const H=['Ford Avenue','Violet Terrace','Albert Avenue','Highland Drive'],C={'Ford Avenue':'#1262ad','Violet Terrace':'#7428a8','Albert Avenue':'#df171f','Highland Drive':'#e3b500'};function ord(n){return n+({1:'st',2:'nd',3:'rd'}[n]||'th')}window.fp=r=>{let t={};r.table.rows.forEach(x=>{let a=x.c.map(v),n=String(a[0]).trim();if(H.includes(n))t[n]=Number(a[1])||0});let q=H.slice().sort((a,b)=>(t[b]??-1)-(t[a]??-1));sg.innerHTML='';q.forEach((h,i)=>{let d=document.createElement('div');d.className='tile '+(h==='Ford Avenue'?'me':'');d.style.setProperty('--c',C[h]);d.innerHTML='<div class="place">'+ord(i+1)+'</div><div class="h">'+h+'<small>'+t[h]+' pts</small></div>';sg.appendChild(d)})};window.fa=r=>{let f='';r.table.rows.forEach(x=>{let a=x.c.map(v);if(String(a[0]).trim()==='Ford Avenue')f=String(a[1]||'').trim()});if(f)about.textContent=f};let A=[],P=0;function D(){shouts.innerHTML='';let a=A.slice(P*3,P*3+3);if(!a.length)shouts.textContent='No Ford Avenue shout-outs have been posted yet.';a.forEach(x=>{let d=document.createElement('div');d.className='shout';d.innerHTML='★ <div><b>'+x.n+(x.g?' • Grade '+x.g:'')+'</b>'+x.s+'</div>';shouts.appendChild(d)});let n=Math.max(1,Math.ceil(A.length/3));pg.textContent=n>1?' '+(P+1)+' of '+n+' ':''};window.fs=r=>{A=r.table.rows.map(x=>x.c.map(v)).filter(a=>String(a[3]||'').trim()==='Ford Avenue').map(a=>({n:a[1],g:a[2],s:a[4]})).reverse();D()};prev.onclick=()=>{if(P){P--;D()}};next.onclick=()=>{if((P+1)*3<A.length){P++;D()}};L('https://docs.google.com/spreadsheets/d/1Jquf820HH6y39T5j-bfb3g761HAaZA2CQKBMGXqSDos/gviz/tq?sheet=Sheet1&headers=0&tqx=responseHandler:fp');L('https://docs.google.com/spreadsheets/d/1zVuk5ETAVylUWVk5O6aW0_loKz_GoIWs5V8dNTunH0M/gviz/tq?sheet=House%20About&headers=1&tqx=responseHandler:fa');L('https://docs.google.com/spreadsheets/d/18Q00r8hh5lDiM3lLIXyiHzCyT6JJblmRDJsoDmAyth0/gviz/tq?sheet=Shout-Outs&headers=1&tqx=responseHandler:fs');
-</script></body></html>
+const SHOUTS_SHEET='18Q00r8hh5lDiM3lLIXyiHzCyT6JJblmRDJsoDmAyth0';
+
+function gviz(sheetId, sheetName, callback){
+  const cb='cb_'+Math.random().toString(36).slice(2);
+  const s=document.createElement('script');
+  window[cb]=data=>{
+    try{callback(data)}
+    finally{
+      delete window[cb];
+      if(s.parentNode) s.parentNode.removeChild(s);
+    }
+  };
+  s.src=`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${encodeURIComponent(sheetName)}&headers=1&tqx=responseHandler:${cb}&_=${Date.now()}`;
+  s.onerror=()=>{
+    document.getElementById('shoutList').innerHTML='<div class="shoutnote">Shout-outs could not load right now.</div>';
+    delete window[cb];
+    if(s.parentNode) s.parentNode.removeChild(s);
+  };
+  document.body.appendChild(s);
+}
+
+function norm(v){
+  return String(v||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+}
+function esc(v){
+  return String(v||'')
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+function gradeLabel(g){
+  const s=String(g||'').trim();
+  if(!s) return '';
+  if(/^\d+$/.test(s)){
+    const n=Number(s);
+    const suffix=(n%100>=11&&n%100<=13)?'th':({1:'st',2:'nd',3:'rd'}[n%10]||'th');
+    return `${n}${suffix} Grade`;
+  }
+  return s;
+}
+
+let shoutPages=[], shoutPage=0;
+
+function renderShouts(){
+  const box=document.getElementById('shoutList');
+  const page=shoutPages[shoutPage]||[];
+  if(!page.length){
+    box.innerHTML='<div class="shoutnote">No Ford Avenue shout-outs yet.</div>';
+  } else {
+    box.innerHTML=page.map(x=>`
+      <div class="shout">
+        <div class="star">★</div>
+        <div class="shouttxt">
+          <b>${esc(x.name)}${x.grade?' • '+esc(gradeLabel(x.grade)):''}</b>
+          <small>${esc(x.msg)}</small>
+        </div>
+      </div>`).join('');
+  }
+  document.getElementById('prevShout').disabled=shoutPage===0;
+  document.getElementById('nextShout').disabled=shoutPage>=shoutPages.length-1;
+}
+
+document.getElementById('prevShout').onclick=()=>{
+  if(shoutPage>0){shoutPage--;renderShouts();}
+};
+document.getElementById('nextShout').onclick=()=>{
+  if(shoutPage<shoutPages.length-1){shoutPage++;renderShouts();}
+};
+
+gviz(SHOUTS_SHEET,'Shout-Outs',data=>{
+  const rows=(data.table.rows||[]).map(r=>(r.c||[]).map(c=>c?c.v:null));
+  const ford=rows
+    .filter(r=>norm(r[3])===norm('Ford Avenue'))
+    .map(r=>({
+      date:r[0]||'',
+      name:String(r[1]||'').trim(),
+      grade:String(r[2]||'').trim(),
+      msg:String(r[4]||'').trim()
+    }))
+    .filter(x=>x.name&&x.msg)
+    .reverse();
+
+  shoutPages=[];
+  for(let i=0;i<ford.length;i+=3) shoutPages.push(ford.slice(i,i+3));
+  shoutPage=0;
+  renderShouts();
+});
+
+const STANDINGS_SHEET='1Jquf820HH6y39T5j-bfb3g761HAaZA2CQKBMGXqSDos';
+
+function ordinal(n){
+  return n===1?'1st':n===2?'2nd':n===3?'3rd':`${n}th`;
+}
+
+function renderStandings(items){
+  const box=document.getElementById('liveRanks');
+  box.innerHTML=items.map((x,i)=>`
+    <div class="liveRank ${i===0?'first':''}">
+      <div class="place">${ordinal(i+1)}</div>
+      <div class="house">${esc(x.house)}<b>${esc(x.points)} pts</b></div>
+    </div>`).join('');
+
+  const ford=items.find(x=>norm(x.house)===norm('Ford Avenue'));
+  if(ford){
+    document.getElementById('fordPts').textContent=ford.points;
+    const pos=items.findIndex(x=>norm(x.house)===norm('Ford Avenue'))+1;
+    document.getElementById('fordPlace').textContent=ordinal(pos).toUpperCase()+' PLACE';
+  }
+}
+
+gviz(STANDINGS_SHEET,'Sheet1',data=>{
+  const rows=(data.table.rows||[]).map(r=>(r.c||[]).map(c=>c?c.v:null));
+  const wanted=['Ford Avenue','Violet Terrace','Albert Avenue','Highland Drive'];
+  const items=rows
+    .filter(r=>wanted.some(h=>norm(r[0])===norm(h)))
+    .map(r=>({house:String(r[0]||''),points:Number(r[1]||0)}))
+    .filter(x=>x.house && Number.isFinite(x.points))
+    .sort((a,b)=>b.points-a.points || a.house.localeCompare(b.house));
+  if(items.length===4) renderStandings(items);
+});
+
+</script>
+</body></html>
