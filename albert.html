@@ -32,6 +32,8 @@ main{max-width:1180px;margin:auto;padding:20px}
 footer{background:var(--red);color:#fff;text-align:center;padding:27px 12px;font-size:31px;font-weight:900;margin-top:15px}
 footer small{display:block;font-size:12px;letter-spacing:2px;margin-top:9px}
 @media(max-width:800px){header{font-size:15px}.family{font-size:17px}nav{gap:18px;padding:11px 8px}nav a{font-size:12px}.top,.bottom{grid-template-columns:1fr}.hero img{min-height:150px;object-fit:cover}.about{min-height:0}}
+
+.standings{margin-top:18px;background:#fff;border:1px solid #c9c1cc;border-radius:8px;padding:14px}.standgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.standtile{background:#111;color:#fff;border-radius:7px;padding:12px;text-align:center}.standtile.current{outline:4px solid var(--p, #d71920)}.standtile strong{display:block;font-size:26px}.standtile b{display:block;margin:4px 0}.standtile span{font-weight:900}@media(max-width:650px){.standgrid{grid-template-columns:1fr 1fr}}
 </style></head><body>
 <header><div>JK &nbsp; JOYCE KILMER MIDDLE SCHOOL</div><div class="family">Four Houses. One Family.</div></header>
 <nav>
@@ -61,7 +63,7 @@ footer small{display:block;font-size:12px;letter-spacing:2px;margin-top:9px}
 <section class="card"><div class="hd">ALBERT AVENUE SHOUT-OUTS</div>
 <div id="shouts">Loading live Albert Avenue shout-outs…</div>
 <div class="pager"><button id="prev">Previous</button><span id="page"></span><button id="next">Next</button></div></section>
-</div></main>
+</div><section class="standings"><div class="hd black">HOUSE CUP — CURRENT STANDINGS • LIVE</div><div id="standings" class="standgrid"><div class="standtile">Loading live standings…</div></div></section></main>
 <footer>FOUR HOUSES. ONE FAMILY.<small>COOPERATION | ASSERTION | RESPONSIBILITY | EMPATHY | SELF-CONTROL</small></footer>
 
 <script>
@@ -112,4 +114,7 @@ document.getElementById('next').onclick=()=>{if((pg+1)*3<shoutouts.length){pg++;
 addScript('https://docs.google.com/spreadsheets/d/1Jquf820HH6y39T5j-bfb3g761HAaZA2CQKBMGXqSDos/gviz/tq?sheet=Sheet1&headers=0&tqx=responseHandler:albertPoints');
 addScript('https://docs.google.com/spreadsheets/d/1zVuk5ETAVylUWVk5O6aW0_loKz_GoIWs5V8dNTunH0M/gviz/tq?sheet=House%20About&headers=1&tqx=responseHandler:albertAbout');
 addScript('https://docs.google.com/spreadsheets/d/18Q00r8hh5lDiM3lLIXyiHzCyT6JJblmRDJsoDmAyth0/gviz/tq?sheet=Shout-Outs&headers=1&tqx=responseHandler:albertShouts');
+
+window.fullStandings=function(r){let t={};r.table.rows.forEach(x=>{let a=x.c.map(v),n=String(a[0]).trim();if(H.includes(n))t[n]=Number(a[1])||0});let q=H.slice().sort((a,b)=>(t[b]??-1)-(t[a]??-1));document.getElementById('standings').innerHTML=q.map((n,i)=>'<div class="standtile '+(n==="Albert Avenue"?'current':'')+'"><strong>'+(i+1)+({0:'ST',1:'ND',2:'RD'}[i]||'TH')+'</strong><b>'+n+'</b><span>'+t[n]+' pts</span></div>').join('')};
+addScript('https://docs.google.com/spreadsheets/d/1Jquf820HH6y39T5j-bfb3g761HAaZA2CQKBMGXqSDos/gviz/tq?sheet=Sheet1&headers=0&tqx=responseHandler:fullStandings');
 </script></body></html>
