@@ -33,15 +33,16 @@ html,body{margin:0;background:#111}
 .flyer-head h2{margin:0;color:#075d3f;font-size:30px}
 .flyer-close{border:0;background:#075d3f;color:#fff;border-radius:999px;width:38px;height:38px;font-size:24px;cursor:pointer}
 .flyer-sub{margin:0 0 18px;color:#47514c;font-weight:600}
-.flyer-list{display:grid;gap:12px}
-.flyer-row{background:#fff;border:1px solid #d8d4ca;border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.flyer-name{font-weight:800;color:#173f31;overflow-wrap:anywhere}
-.flyer-view{display:inline-block;background:#075d3f;color:#fff;text-decoration:none;font-weight:800;padding:9px 14px;border-radius:7px;white-space:nowrap}
+.flyer-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:16px}
+.flyer-row{background:#fff;border:1px solid #d8d4ca;border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:9px;box-shadow:0 3px 10px rgba(0,0,0,.08)}
+.flyer-thumb{display:block;width:100%;aspect-ratio:8.5/11;object-fit:cover;object-position:top;background:#eee;border-radius:7px;border:1px solid #ddd;cursor:pointer}
+.flyer-name{font-weight:800;color:#173f31;overflow-wrap:anywhere;font-size:13px;line-height:1.25}
+.flyer-view{display:inline-block;background:#075d3f;color:#fff;text-decoration:none;font-weight:800;padding:8px 10px;border-radius:7px;text-align:center;font-size:12px}
 .flyer-status{padding:18px;background:#fff;border-radius:12px;color:#47514c}
 @media(max-width:600px){
  .flyer-panel{padding:18px}
  .flyer-head h2{font-size:24px}
- .flyer-row{align-items:flex-start;flex-direction:column}
+ .flyer-list{grid-template-columns:repeat(2,minmax(0,1fr))}
  .flyer-view{width:100%;text-align:center;box-sizing:border-box}
 }
 </style>
@@ -81,7 +82,7 @@ html,body{margin:0;background:#111}
 </div>
 
 <script>
-const FLYER_FEED = "https://script.google.com/macros/s/AKfycbwe2ULn5jD0HIWJIJdXcre5PoeitVH2n-ii0Cju11Qh2smWEYDVuXPISyKdMWtt2wh1/exec";
+const FLYER_FEED = "https://script.google.com/macros/s/AKfycby-njwtQ3hRstmZ1ce6QTPn6yoBNBgj3mFirlB5hZ4J4-KwMWO1YAd5Lzt2RdejGOU/exec";
 const flyerHub = document.getElementById("flyerHub");
 const flyerModal = document.getElementById("flyerModal");
 const flyerList = document.getElementById("flyerList");
@@ -103,8 +104,11 @@ async function refreshFlyers() {
     }
     flyerList.innerHTML = flyers.map(f => `
       <div class="flyer-row">
+        <a href="${esc(f.url)}" target="_blank" rel="noopener" aria-label="Open ${esc(f.name)}">
+          <img class="flyer-thumb" src="${esc(f.thumbnail)}" alt="${esc(f.name)} preview" loading="lazy">
+        </a>
         <div class="flyer-name">${esc(f.name)}</div>
-        <a class="flyer-view" href="${esc(f.url)}" target="_blank" rel="noopener">VIEW PDF</a>
+        <a class="flyer-view" href="${esc(f.url)}" target="_blank" rel="noopener">OPEN LARGER</a>
       </div>`).join("");
   } catch(e) {
     flyerList.innerHTML = '<div class="flyer-status">Flyers are temporarily unavailable. Please try again.</div>';
