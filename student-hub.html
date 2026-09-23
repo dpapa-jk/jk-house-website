@@ -24,6 +24,27 @@ html,body{margin:0;background:#111}
 .calendar{left:51%;top:86.3%;width:22%;height:4.6%}
 .flyers{left:75%;top:86.3%;width:22%;height:4.6%}
 </style>
+
+<style>
+#flyerModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:9999;padding:24px;box-sizing:border-box}
+#flyerModal.open{display:flex;align-items:center;justify-content:center}
+.flyer-panel{background:#f7f1e5;width:min(760px,96vw);max-height:88vh;overflow:auto;border-radius:18px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.4);font-family:Arial,sans-serif}
+.flyer-head{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:4px solid #075d3f;padding-bottom:12px;margin-bottom:16px}
+.flyer-head h2{margin:0;color:#075d3f;font-size:30px}
+.flyer-close{border:0;background:#075d3f;color:#fff;border-radius:999px;width:38px;height:38px;font-size:24px;cursor:pointer}
+.flyer-sub{margin:0 0 18px;color:#47514c;font-weight:600}
+.flyer-list{display:grid;gap:12px}
+.flyer-row{background:#fff;border:1px solid #d8d4ca;border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.flyer-name{font-weight:800;color:#173f31;overflow-wrap:anywhere}
+.flyer-view{display:inline-block;background:#075d3f;color:#fff;text-decoration:none;font-weight:800;padding:9px 14px;border-radius:7px;white-space:nowrap}
+.flyer-status{padding:18px;background:#fff;border-radius:12px;color:#47514c}
+@media(max-width:600px){
+ .flyer-panel{padding:18px}
+ .flyer-head h2{font-size:24px}
+ .flyer-row{align-items:flex-start;flex-direction:column}
+ .flyer-view{width:100%;text-align:center;box-sizing:border-box}
+}
+</style>
 </head>
 <body>
 <div class="page">
@@ -44,40 +65,60 @@ html,body{margin:0;background:#111}
 <a class="hot school" href="https://www.milltownps.org" target="_blank" rel="noopener" aria-label="School Website"></a>
 <a class="hot grades" href="https://genesis.c1.genesisedu.net/milltown/sis/view?gohome=true" target="_blank" rel="noopener" aria-label="Check Your Grades"></a>
 <a class="hot calendar" href="https://4.files.edl.io/1bcb/07/06/26/190157-41b8d99d-9e09-4387-877b-b6a93e48704c.pdf" target="_blank" rel="noopener" aria-label="School Calendar"></a>
-<a class="hot flyers" id="flyerHub" href="#" target="_blank" rel="noopener" aria-label="Flyer Hub"></a>
+<a class="hot flyers" id="flyerHub" href="#" aria-label="Flyer Hub"></a>
+</div>
+
+
+<div id="flyerModal" role="dialog" aria-modal="true" aria-labelledby="flyerTitle">
+  <div class="flyer-panel">
+    <div class="flyer-head">
+      <h2 id="flyerTitle">FLYER HUB</h2>
+      <button class="flyer-close" id="flyerClose" aria-label="Close">×</button>
+    </div>
+    <p class="flyer-sub">Latest school flyers, announcements, and helpful information.</p>
+    <div id="flyerList" class="flyer-list"><div class="flyer-status">Loading flyers…</div></div>
+  </div>
 </div>
 
 <script>
 const FLYER_FEED = "https://script.google.com/macros/s/AKfycbwe2ULn5jD0HIWJIJdXcre5PoeitVH2n-ii0Cju11Qh2smWEYDVuXPISyKdMWtt2wh1/exec";
-async function loadFlyers() {
-  const flyerHub = document.getElementById("flyerHub");
+const flyerHub = document.getElementById("flyerHub");
+const flyerModal = document.getElementById("flyerModal");
+const flyerList = document.getElementById("flyerList");
+const flyerClose = document.getElementById("flyerClose");
+
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+async function refreshFlyers() {
+  flyerList.innerHTML = '<div class="flyer-status">Loading flyers…</div>';
   try {
-    const response = await fetch(FLYER_FEED, {cache:"no-store"});
-    const flyers = await response.json();
-    if (Array.isArray(flyers) && flyers.length) {
-      // Card opens the newest PDF directly.
-      flyerHub.href = flyers[0].url;
-      flyerHub.title = flyers.length === 1
-        ? flyers[0].name
-        : flyers.length + " school flyers available — opens newest";
-      // Keep all live flyer records available to the page for future UI expansion.
-      window.JK_FLYERS = flyers;
-    } else {
-      flyerHub.removeAttribute("target");
-      flyerHub.onclick = function(e) {
-        e.preventDefault();
-        alert("There are no school flyers posted right now.");
-      };
+    const r = await fetch(FLYER_FEED + "?_=" + Date.now(), {cache:"no-store"});
+    if (!r.ok) throw new Error("feed");
+    const flyers = await r.json();
+    if (!Array.isArray(flyers) || flyers.length === 0) {
+      flyerList.innerHTML = '<div class="flyer-status">There are no school flyers posted right now.</div>';
+      return;
     }
-  } catch (err) {
-    flyerHub.removeAttribute("target");
-    flyerHub.onclick = function(e) {
-      e.preventDefault();
-      alert("Flyers are temporarily unavailable. Please try again.");
-    };
+    flyerList.innerHTML = flyers.map(f => `
+      <div class="flyer-row">
+        <div class="flyer-name">${esc(f.name)}</div>
+        <a class="flyer-view" href="${esc(f.url)}" target="_blank" rel="noopener">VIEW PDF</a>
+      </div>`).join("");
+  } catch(e) {
+    flyerList.innerHTML = '<div class="flyer-status">Flyers are temporarily unavailable. Please try again.</div>';
   }
 }
-loadFlyers();
+
+flyerHub.addEventListener("click", e => {
+  e.preventDefault();
+  flyerModal.classList.add("open");
+  refreshFlyers();
+});
+flyerClose.addEventListener("click", () => flyerModal.classList.remove("open"));
+flyerModal.addEventListener("click", e => { if(e.target === flyerModal) flyerModal.classList.remove("open"); });
+document.addEventListener("keydown", e => { if(e.key === "Escape") flyerModal.classList.remove("open"); });
 </script>
 </body>
 </html>
