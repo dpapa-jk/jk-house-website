@@ -44,7 +44,40 @@ html,body{margin:0;background:#111}
 <a class="hot school" href="https://www.milltownps.org" target="_blank" rel="noopener" aria-label="School Website"></a>
 <a class="hot grades" href="https://genesis.c1.genesisedu.net/milltown/sis/view?gohome=true" target="_blank" rel="noopener" aria-label="Check Your Grades"></a>
 <a class="hot calendar" href="https://4.files.edl.io/1bcb/07/06/26/190157-41b8d99d-9e09-4387-877b-b6a93e48704c.pdf" target="_blank" rel="noopener" aria-label="School Calendar"></a>
-<a class="hot flyers" href="https://drive.google.com/file/d/1lc68Qg6Gs7V5wSn6Qh2gimr1rjSzkpry/preview" target="_blank" rel="noopener" aria-label="Flyer Hub"></a>
+<a class="hot flyers" id="flyerHub" href="#" target="_blank" rel="noopener" aria-label="Flyer Hub"></a>
 </div>
+
+<script>
+const FLYER_FEED = "https://script.google.com/macros/s/AKfycbwe2ULn5jD0HIWJIJdXcre5PoeitVH2n-ii0Cju11Qh2smWEYDVuXPISyKdMWtt2wh1/exec";
+async function loadFlyers() {
+  const flyerHub = document.getElementById("flyerHub");
+  try {
+    const response = await fetch(FLYER_FEED, {cache:"no-store"});
+    const flyers = await response.json();
+    if (Array.isArray(flyers) && flyers.length) {
+      // Card opens the newest PDF directly.
+      flyerHub.href = flyers[0].url;
+      flyerHub.title = flyers.length === 1
+        ? flyers[0].name
+        : flyers.length + " school flyers available — opens newest";
+      // Keep all live flyer records available to the page for future UI expansion.
+      window.JK_FLYERS = flyers;
+    } else {
+      flyerHub.removeAttribute("target");
+      flyerHub.onclick = function(e) {
+        e.preventDefault();
+        alert("There are no school flyers posted right now.");
+      };
+    }
+  } catch (err) {
+    flyerHub.removeAttribute("target");
+    flyerHub.onclick = function(e) {
+      e.preventDefault();
+      alert("Flyers are temporarily unavailable. Please try again.");
+    };
+  }
+}
+loadFlyers();
+</script>
 </body>
 </html>
