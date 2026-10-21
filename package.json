@@ -1,0 +1,22 @@
+{
+  "name": "jk-house-website",
+  "version": "1.0.0",
+  "description": "Joyce Kilmer House Program Website",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpapa-jk/jk-house-website.git"
+  },
+  "keywords": ["house-program", "school"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dpapa-jk/jk-house-website/issues"
+  },
+  "homepage": "https://github.com/dpapa-jk/jk-house-website#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
